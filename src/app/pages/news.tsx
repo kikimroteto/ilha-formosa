@@ -1,56 +1,34 @@
 import { motion } from "motion/react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { Link } from "react-router";
+import { useEffect, useState } from "react";
 
-const newsList = [
-  {
-    id: 1,
-    date: "2026.04.03",
-    time: "PM. 4:08",
-    title: "飯田橋サクラテラス店 4月の定休日のおしらせ",
-    image:
-      "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: 2,
-    date: "2026.03.03",
-    time: "AM. 10:27",
-    title: "春の新作コース『麗らか（うららか）』のご案内",
-    image:
-      "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: 3,
-    date: "2026.01.01",
-    time: "AM. 9:00",
-    title: "2026年 新年のご挨拶",
-    image: null,
-  },
-  {
-    id: 4,
-    date: "2025.12.30",
-    time: "AM. 9:00",
-    title: "年末年始の営業について",
-    image: null,
-  },
-  {
-    id: 5,
-    date: "2025.12.26",
-    time: "AM. 10:12",
-    title: "冬季限定メニュー開始のお知らせ",
-    image: null,
-  },
-  {
-    id: 6,
-    date: "2025.12.17",
-    time: "PM. 12:33",
-    title: "オンライン予約システム メンテナンスのお知らせ",
-    image: null,
-  },
-];
+type MicroCMSImage = {
+  url: string;
+  height?: number;
+  width?: number;
+};
+
+type NewsItem = {
+  id: string;
+  title: string;
+  date: string;
+  time?: string;
+  image?: MicroCMSImage;
+  body?: string;
+  slug?: string;
+};
+
+type NewsResponse = {
+  contents: NewsItem[];
+};
 
 function formatDateParts(date: string) {
-  const [year, month, day] = date.split(".");
+  const dateObj = new Date(date);
+  const year = String(dateObj.getFullYear());
+  const month = String(dateObj.getMonth() + 1).padStart(2, "0");
+  const day = String(dateObj.getDate()).padStart(2, "0");
+
   return {
     year,
     month,
@@ -59,6 +37,40 @@ function formatDateParts(date: string) {
 }
 
 export function News() {
+  const [newsList, setNewsList] = useState<NewsItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const serviceDomain = import.meta.env.VITE_MICROCMS_SERVICE_DOMAIN;
+        const apiKey = import.meta.env.VITE_MICROCMS_API_KEY;
+
+        const response = await fetch(
+          `https://${serviceDomain}.microcms.io/api/v1/news?orders=-date`,
+          {
+            headers: {
+              "X-MICROCMS-API-KEY": apiKey,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("ニュースの取得に失敗しました");
+        }
+
+        const data: NewsResponse = await response.json();
+        setNewsList(data.contents);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchNews();
+  }, []);
+
   return (
     <div className="min-h-screen bg-transparent text-[#123646] overflow-x-hidden">
       {/* Hero Section：MVはそのまま */}
@@ -119,84 +131,94 @@ export function News() {
 
           {/* カード一覧 */}
           <div className="bg-white/55 border border-[#123646]/8 px-5 py-8 md:px-10 md:py-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
-              {newsList.map((item, index) => {
-                const { year, month, day } = formatDateParts(item.date);
+            {loading ? (
+              <p className="font-ja text-center text-[13px] tracking-[0.08em] text-[#123646]/70">
+                読み込み中です。
+              </p>
+            ) : newsList.length === 0 ? (
+              <p className="font-ja text-center text-[13px] tracking-[0.08em] text-[#123646]/70">
+                現在、お知らせはありません。
+              </p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
+                {newsList.map((item, index) => {
+                  const { year, month, day } = formatDateParts(item.date);
 
-                return (
-                  <motion.article
-                    key={item.id}
-                    initial={{ opacity: 0, y: 18 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.65, delay: index * 0.05 }}
-                    viewport={{ once: true }}
-                  >
-                    <Link
-                      to={`/news/${item.id}`}
-                      className="group block h-full bg-white/70 border border-[#123646]/10 transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(18,54,70,0.08)]"
+                  return (
+                    <motion.article
+                      key={item.id}
+                      initial={{ opacity: 0, y: 18 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.65, delay: index * 0.05 }}
+                      viewport={{ once: true }}
                     >
-                      {/* 画像 */}
-                      <div className="relative aspect-[4/3] overflow-hidden bg-[#EFE9E3]">
-                        {item.image ? (
-                          <ImageWithFallback
-                            src={item.image}
-                            alt={item.title}
-                            className="w-full h-full object-cover transition duration-[1.2s] group-hover:scale-105"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center bg-[#EFE9E3] px-6">
-                            <div className="text-center">
-                              <div className="text-[#123646] font-en-medium text-[24px] md:text-[30px] leading-[1.05] tracking-[0.08em]">
-                                ILHA
-                                <br />
-                                FORMOSA
-                              </div>
-                              <div className="mt-5 text-[#B08A6A] text-[11px] tracking-[0.35em]">
-                                NEWS
+                      <Link
+                        to={`/news/${item.slug || item.id}`}
+                        className="group block h-full bg-white/70 border border-[#123646]/10 transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(18,54,70,0.08)]"
+                      >
+                        {/* 画像 */}
+                        <div className="relative aspect-[4/3] overflow-hidden bg-[#EFE9E3]">
+                          {item.image?.url ? (
+                            <ImageWithFallback
+                              src={item.image.url}
+                              alt={item.title}
+                              className="w-full h-full object-cover transition duration-[1.2s] group-hover:scale-105"
+                            />
+                          ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-[#EFE9E3] px-6">
+                              <div className="text-center">
+                                <div className="text-[#123646] font-en-medium text-[24px] md:text-[30px] leading-[1.05] tracking-[0.08em]">
+                                  ILHA
+                                  <br />
+                                  FORMOSA
+                                </div>
+                                <div className="mt-5 text-[#B08A6A] text-[11px] tracking-[0.35em]">
+                                  NEWS
+                                </div>
                               </div>
                             </div>
+                          )}
+
+                          <div className="absolute inset-0 bg-gradient-to-t from-[#123646]/45 via-transparent to-transparent opacity-70" />
+
+                          <div className="absolute left-5 bottom-5 text-white">
+                            <p className="font-en-medium text-[11px] tracking-[0.24em] text-white/80">
+                              {year}
+                            </p>
+                            <p className="font-en-medium mt-1 text-[28px] md:text-[32px] tracking-[0.08em] leading-none">
+                              {month}.{day}
+                            </p>
                           </div>
-                        )}
-
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#123646]/45 via-transparent to-transparent opacity-70" />
-
-                        <div className="absolute left-5 bottom-5 text-white">
-                          <p className="font-en-medium text-[11px] tracking-[0.24em] text-white/80">
-                            {year}
-                          </p>
-                          <p className="font-en-medium mt-1 text-[28px] md:text-[32px] tracking-[0.08em] leading-none">
-                            {month}.{day}
-                          </p>
-                        </div>
-                      </div>
-
-                      {/* テキスト */}
-                      <div className="px-6 py-6 md:px-7 md:py-7 min-h-[155px] flex flex-col">
-                        <div className="flex items-center justify-between gap-4 mb-5">
-                          <p className="font-en-medium text-[11px] tracking-[0.18em] text-[#B08A6A]">
-                            NEW POST
-                          </p>
-                          <p className="font-en-medium text-[11px] tracking-[0.08em] text-[#123646]/55">
-                            {item.time}
-                          </p>
                         </div>
 
-                        <h3 className="font-ja text-[15px] md:text-[16px] leading-[1.9] tracking-[0.04em] text-[#123646] group-hover:text-[#B08A6A] transition duration-300">
-                          {item.title}
-                        </h3>
+                        {/* テキスト */}
+                        <div className="px-6 py-6 md:px-7 md:py-7 min-h-[155px] flex flex-col">
+                          <div className="flex items-center justify-between gap-4 mb-5">
+                            <p className="font-en-medium text-[11px] tracking-[0.18em] text-[#B08A6A]">
+                              NEW POST
+                            </p>
+                            <p className="font-en-medium text-[11px] tracking-[0.08em] text-[#123646]/55">
+                              {item.time || ""}
+                            </p>
+                          </div>
 
-                        <div className="mt-auto pt-6 flex items-center gap-3 text-[#123646]/70 group-hover:text-[#B08A6A] transition duration-300">
-                          <span className="font-en-medium text-[11px] tracking-[0.16em]">
-                            READ MORE
-                          </span>
-                          <span className="w-7 h-[1px] bg-current transition duration-300 group-hover:w-10" />
+                          <h3 className="font-ja text-[15px] md:text-[16px] leading-[1.9] tracking-[0.04em] text-[#123646] group-hover:text-[#B08A6A] transition duration-300">
+                            {item.title}
+                          </h3>
+
+                          <div className="mt-auto pt-6 flex items-center gap-3 text-[#123646]/70 group-hover:text-[#B08A6A] transition duration-300">
+                            <span className="font-en-medium text-[11px] tracking-[0.16em]">
+                              READ MORE
+                            </span>
+                            <span className="w-7 h-[1px] bg-current transition duration-300 group-hover:w-10" />
+                          </div>
                         </div>
-                      </div>
-                    </Link>
-                  </motion.article>
-                );
-              })}
-            </div>
+                      </Link>
+                    </motion.article>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       </section>
