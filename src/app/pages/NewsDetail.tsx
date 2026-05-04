@@ -228,20 +228,8 @@ export function NewsDetail() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.75 }}
                   viewport={{ once: true }}
-                  className="mt-16 md:mt-20 bg-white/55 border border-[#123646]/8 px-5 py-10 md:px-10 md:py-12"
+                  className="mt-16 md:mt-20 pt-12 md:pt-16 border-t border-[#123646]/35"
                 >
-                  <div className="text-center mb-10 md:mb-12">
-                    <p className="font-en-medium text-[12px] md:text-[13px] tracking-[0.34em] text-[#B08A6A] mb-5">
-                      OTHER NEWS
-                    </p>
-
-                    <h3 className="font-ja text-[24px] md:text-[30px] tracking-[0.12em] text-[#123646] font-light">
-                      その他のお知らせ
-                    </h3>
-
-                    <div className="w-16 h-[1px] bg-[#123646]/25 mx-auto mt-7" />
-                  </div>
-
                   <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
                     {otherNews.map((item, index) => {
                       const { year, month, day } = formatDateParts(item.date);

@@ -262,7 +262,7 @@ export function Menu() {
               お料理
             </h1>
             <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent mx-auto mb-8"></div>
-            <p className="font-ja text-[13px] md:text-[16px] text-white/90 tracking-[0.16em] font-light">
+            <p className="text-base md:text-lg text-white/90 tracking-[0.2em] font-light">
               台湾の味わいを、京都の感性で
             </p>
           </motion.div>
@@ -274,37 +274,39 @@ export function Menu() {
         <div className="pointer-events-none absolute bottom-40 left-0 hidden md:block w-[260px] h-[260px] rounded-full bg-[#123646]/5" />
 
         <div className="relative container mx-auto max-w-5xl">
-          {/* アンカーナビゲーション */}
-          <motion.div className="sticky top-0 z-30 mb-14 md:mb-20">
-            <nav className="flex justify-center py-3 md:py-5">
-              <div className="w-full max-w-[760px] overflow-x-auto border border-[#123646]/10 bg-white/80 px-2 md:px-3 py-2 shadow-[0_12px_34px_rgba(18,54,70,0.04)] backdrop-blur-sm">
-                <div className="flex items-center justify-between gap-2 min-w-max md:min-w-0">
-                  {menuSections.map((section) => {
-                    const isActive = activeSection === section.id;
+{/* アンカーナビゲーション */}
+<motion.div className="fixed bottom-0 left-0 right-0 z-40 md:sticky md:top-0 md:bottom-auto mb-0 md:mb-20">
+  <nav className="flex justify-center px-4 pb-4 pt-2 md:px-0 md:py-5">
+    <div className="w-full max-w-[760px] border border-[#123646]/10 bg-white/90 md:bg-white/80 px-1.5 md:px-3 py-1.5 md:py-2 shadow-[0_-8px_28px_rgba(18,54,70,0.08)] md:shadow-[0_12px_34px_rgba(18,54,70,0.04)] backdrop-blur-sm">
+      <div className="grid grid-cols-4 gap-1 md:flex md:items-center md:justify-between md:gap-2">
+        {menuSections.map((section) => {
+          const isActive = activeSection === section.id;
 
-                    return (
-                      <button
-                        key={section.id}
-                        onClick={() => scrollToSection(section.id)}
-                        className={`min-w-[92px] md:min-w-0 md:flex-1 px-4 md:px-6 py-3 transition duration-300 ${
-                          isActive
-                            ? "bg-[#123646] text-white"
-                            : "text-[#123646] hover:bg-[#123646]/8"
-                        }`}
-                      >
-                        <span className="font-en-medium block text-[9px] md:text-[11px] tracking-[0.12em]">
-                          {section.label}
-                        </span>
-                        <span className="font-ja block mt-1.5 text-[9px] md:text-[11px] tracking-[0.08em]">
-                          {section.labelJa}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            </nav>
-          </motion.div>
+          return (
+            <button
+              key={section.id}
+              onClick={() => scrollToSection(section.id)}
+              className={`w-full md:flex-1 px-1.5 md:px-6 py-2.5 md:py-3 transition duration-300 ${
+                isActive
+                  ? "bg-[#123646] text-white"
+                  : "text-[#123646] hover:bg-[#123646]/8"
+              }`}
+            >
+              <span className="font-en-medium block text-[7px] md:text-[11px] tracking-[0.06em] md:tracking-[0.12em] whitespace-nowrap">
+                {section.label}
+              </span>
+              <span className="font-ja block mt-1 text-[8px] md:text-[11px] tracking-[0.02em] md:tracking-[0.08em] whitespace-nowrap">
+                {section.labelJa}
+              </span>
+            </button>
+          );
+        })}
+      </div>
+    </div>
+  </nav>
+</motion.div>
+{/* SP用：下固定ナビにした分、上に余白を作る */}
+<div className="block md:hidden h-16" />
 
           {/* コースセクション */}
           <motion.section
@@ -317,7 +319,7 @@ export function Menu() {
           >
             <div className="mb-16 md:mb-20 text-center">
               <p className="font-en-medium text-[12px] md:text-[13px] tracking-[0.34em] text-[#B08A6A] mb-5">
-                COURSE
+                品味套餐
               </p>
 
               <h2 className="font-en-medium text-[34px] md:text-[46px] text-[#123646] tracking-[0.16em] font-light">
@@ -388,7 +390,7 @@ export function Menu() {
           >
             <div className="mb-16 md:mb-20 text-center">
               <p className="font-en-medium text-[12px] md:text-[13px] tracking-[0.34em] text-[#B08A6A] mb-5">
-                LUNCH
+                午間食光
               </p>
 
               <h2 className="font-en-medium text-[34px] md:text-[46px] text-[#123646] tracking-[0.16em] font-light">
@@ -469,7 +471,7 @@ export function Menu() {
           >
             <div className="mb-16 md:mb-20 text-center">
               <p className="font-en-medium text-[12px] md:text-[13px] tracking-[0.34em] text-[#B08A6A] mb-5">
-                TEA / SWEETS
+                茶與甜點
               </p>
 
               <h2 className="font-en-medium text-[34px] md:text-[46px] text-[#123646] tracking-[0.16em] font-light">
@@ -533,7 +535,7 @@ export function Menu() {
           >
             <div className="mb-16 md:mb-20 text-center">
               <p className="font-en-medium text-[12px] md:text-[13px] tracking-[0.34em] text-[#B08A6A] mb-5">
-                DRINK
+                美酒佳飲
               </p>
 
               <h2 className="font-en-medium text-[34px] md:text-[46px] text-[#123646] tracking-[0.16em] font-light">
