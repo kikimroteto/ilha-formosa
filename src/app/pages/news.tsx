@@ -13,7 +13,6 @@ type NewsItem = {
   id: string;
   title: string;
   date: string;
-  time?: string;
   image?: MicroCMSImage;
   body?: string;
   slug?: string;
@@ -193,12 +192,9 @@ export function News() {
 
                         {/* テキスト */}
                         <div className="px-6 py-6 md:px-7 md:py-7 min-h-[155px] flex flex-col">
-                          <div className="flex items-center justify-between gap-4 mb-5">
+                          <div className="mb-5">
                             <p className="font-en-medium text-[11px] tracking-[0.18em] text-[#B08A6A]">
                               NEW POST
-                            </p>
-                            <p className="font-en-medium text-[11px] tracking-[0.08em] text-[#123646]/55">
-                              {item.time || ""}
                             </p>
                           </div>
 
