@@ -123,10 +123,34 @@ export function About() {
       {/* ===== Food / Message Section ===== */}
       <section className="relative px-0 md:px-12 lg:px-20 py-16 md:py-28">
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-16 lg:gap-24 items-center">
-            {/* 左画像コラージュ */}
+          <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-16 lg:gap-24 items-center">
+            {/* 左テキスト */}
             <motion.div
               initial={{ opacity: 0, x: -36 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              className="px-6 md:px-0 lg:pl-8"
+            >
+              <div className="font-ja text-[14px] md:text-[15px] leading-[2.45] tracking-[0.08em] text-[#123646] space-y-4 max-w-xl">
+                <p>台湾の食卓には、朝も夜も、いつも人の気配があります。</p>
+                <p>湯気の立つ一皿、香ばしく焼き上げる音、食欲を誘う香り。</p>
+                <p>それらはただの食事ではなく、</p>
+                <p>その日を前向きに始めたり、大切な人と語らったりするための、</p>
+                <p>ささやかな力になっているように思います。</p>
+                <p>ILHA FORMOSAでは、そんな台湾の食文化を大切にしながら、</p>
+                <p>京都で過ごすひとときに合う味わいへと整えています。</p>
+                <p>皆さまのご来店を、心よりお待ちしております。</p>
+              </div>
+
+              <p className="mt-20 md:mt-24 text-[28px] md:text-[33px] leading-relaxed tracking-[0.04em] text-[#B08A6A] font-light">
+                Always warm, always Formosa.
+              </p>
+            </motion.div>
+
+            {/* 右画像コラージュ */}
+            <motion.div
+              initial={{ opacity: 0, x: 36 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
@@ -155,30 +179,6 @@ export function About() {
                   className="w-full h-[174px] md:h-[252px] object-cover"
                 />
               </div>
-            </motion.div>
-
-            {/* 右テキスト */}
-            <motion.div
-              initial={{ opacity: 0, x: 36 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-              className="px-6 md:px-0 lg:pr-8"
-            >
-              <div className="font-ja text-[14px] md:text-[15px] leading-[2.45] tracking-[0.08em] text-[#123646] space-y-4 max-w-xl">
-                <p>台湾の食卓には、朝も夜も、いつも人の気配があります。</p>
-                <p>湯気の立つ一皿、香ばしく焼き上げる音、食欲を誘う香り。</p>
-                <p>それらはただの食事ではなく、</p>
-                <p>その日を前向きに始めたり、大切な人と語らったりするための、</p>
-                <p>ささやかな力になっているように思います。</p>
-                <p>ILHA FORMOSAでは、そんな台湾の食文化を大切にしながら、</p>
-                <p>京都で過ごすひとときに合う味わいへと整えています。</p>
-                <p>皆さまのご来店を、心よりお待ちしております。</p>
-              </div>
-
-              <p className="mt-20 md:mt-24 text-[28px] md:text-[33px] leading-relaxed tracking-[0.04em] text-[#B08A6A] font-light">
-                Always warm, always Formosa.
-              </p>
             </motion.div>
           </div>
         </div>
@@ -231,7 +231,7 @@ export function About() {
       {/* ===== Hope Section：Redesign ===== */}
       <section className="relative px-6 md:px-12 lg:px-20 py-24 md:py-36 overflow-hidden">
         {/* 背景装飾 */}
-        <div className="pointer-events-none absolute -top-20 -right-20 w-[360px] h-[360px] rounded-full bg-[#123646]/5" />
+        <div className="pointer-events-none absolute top-24 md:top-20 -right-24 md:-right-24 w-[360px] h-[360px] rounded-full bg-[#123646]/5" />
         <div className="pointer-events-none absolute bottom-10 -left-24 w-[300px] h-[300px] rounded-full bg-[#B08A6A]/10" />
 
         <div className="relative max-w-7xl mx-auto">
