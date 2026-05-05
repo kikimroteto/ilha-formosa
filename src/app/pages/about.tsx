@@ -4,6 +4,8 @@ import buildingImage from "../../imports/building.jpeg";
 import ochaImage from "../../imports/ocha.jpeg";
 import yakuzenImage from "../../imports/yakuzen.jpeg";
 import kawamuraImage from "../../imports/kawamura.jpg";
+import interiorImage1 from "../../imports/interior1.jpg";
+import interiorImage2 from "../../imports/interior2.jpg";
 
 export function About() {
   return (
@@ -85,18 +87,16 @@ export function About() {
               </div>
 
               <h2 className="text-[32px] md:text-[43px] leading-[1.85] tracking-[0.13em] text-[#123646] font-mincho mb-16">
-                台湾の、<br />
-                あたたかな記憶を<br />
+                本場台湾の味わいを、<br />
                 京都の一皿へ。
               </h2>
 
-              <div className="font-ja text-[14px] md:text-[15px] leading-[2.25] tracking-[0.08em] text-[#123646] space-y-4 max-w-xl">
-                <p>訪れた方がふっと心をほどく、台湾の活気とやさしさ。</p>
-                <p>ILHA FORMOSAは、台湾という美しい島の食文化を、</p>
-                <p>京都の落ち着いた時間に寄り添う料理として届けたいと考えました。</p>
-                <p>薬膳の香り、食材の旨み、屋台のような親しみやすさ。</p>
-                <p>そこに少しの自由な発想を重ねて、</p>
-                <p>日常にも特別な夜にもなじむ台湾料理をお楽しみいただけます。</p>
+              <div className="font-ja text-[14px] md:text-[15px] leading-[2.25] tracking-[0.08em] text-[#123646] space-y-1.3 max-w-xl">
+                <p>台湾の食卓にある、湯気の立つ料理や、食欲を誘う香り。</p>
+                <p>ILHA FORMOSAでは、台湾から届く茶葉や香辛料、薬膳素材を取り入れながら、現地で親しまれてきた味わいを大切にしています。</p>
+                <p>屋台のような親しみやすさ、家庭料理のあたたかさ、少し特別な日の楽しさ。</p>
+                <p>そんな台湾らしい空気を、京都で気軽に味わえる一皿としてお届けします。</p>
+                <p>日常にも特別な夜にも、肩ひじ張らずに楽しめる、ILHA FORMOSAらしい台湾料理をお楽しみください。</p>
               </div>
             </motion.div>
 
@@ -132,15 +132,14 @@ export function About() {
               viewport={{ once: true }}
               className="px-6 md:px-0 lg:pl-8 lg:order-2"
             >
-              <div className="font-ja text-[14px] md:text-[15px] leading-[2.45] tracking-[0.08em] text-[#123646] space-y-4 max-w-xl">
-                <p>台湾の食卓には、朝も夜も、いつも人の気配があります。</p>
-                <p>湯気の立つ一皿、香ばしく焼き上げる音、食欲を誘う香り。</p>
-                <p>それらはただの食事ではなく、</p>
-                <p>その日を前向きに始めたり、大切な人と語らったりするための、</p>
-                <p>ささやかな力になっているように思います。</p>
-                <p>ILHA FORMOSAでは、そんな台湾の食文化を大切にしながら、</p>
-                <p>京都で過ごすひとときに合う味わいへと整えています。</p>
-                <p>皆さまのご来店を、心よりお待ちしております。</p>
+              <div className="font-ja text-[14px] md:text-[15px] leading-[2.25] tracking-[0.08em] text-[#123646] space-y-1.3 max-w-xl">
+                <p>台湾生まれ、アメリカ育ち。</p>
+                <p>そんなルーツから生まれたのが、ILHA FORMOSAの自由な台湾料理です。</p>
+                <p>台湾の家庭料理や薬膳の知恵に、アメリカで親しまれてきたチャイニーズフードの楽しさを重ねて、どこか懐かしくて、少し新しい味わいに仕上げています。</p>
+                <p>甘酸っぱいソース、香ばしい揚げもの、食欲をそそるスパイス。</p>
+                <p>本場の味わいを大切にしながらも、気軽に楽しめる一皿をそろえました。</p>
+                <p>初めての方も、台湾料理が好きな方も。</p>
+                <p>京都で過ごすひとときに、台湾とアメリカの空気がまざる、楽しい食卓をお届けします。</p>
               </div>
 
               <p className="mt-20 md:mt-24 text-[28px] md:text-[33px] leading-relaxed tracking-[0.04em] text-[#B08A6A] font-light">
@@ -204,10 +203,10 @@ export function About() {
 
             <div className="font-ja mt-12 mx-auto max-w-[780px] text-[14px] md:text-[15px] leading-[2.25] tracking-[0.08em] text-[#123646] space-y-1.3">
               <p>
-                「ILHA FORMOSA」は、ポルトガル語で「美しい島」と呼ばれたことに由来します。
+                「ILHA FORMOSA」は、ラテン語で「美しい島」と呼ばれたことに由来します。
               </p>
               <p>
-                かつて台湾がそう呼ばれたように、海を渡って育まれてきた食文化、人を迎えるあたたかさ、香り豊かな料理には、台湾ならではの魅力があります。
+                かつて台湾がそう呼ばれたように、海を渡って育まれてきた食文化や香り豊かな料理には、台湾ならではの魅力があります。
               </p>
               <p>
                 ILHA FORMOSAは、その“美しい島”の食の記憶を、京都の街でゆっくり楽しんでいただきたいという想いから生まれました。一皿の料理を通して、台湾の香りとあたたかな時間をお届けします。
@@ -246,19 +245,17 @@ export function About() {
             </p>
 
             <h2 className="text-[32px] md:text-[46px] leading-[1.6] tracking-[0.09em] text-[#123646] font-mincho">
-              ILHA FORMOSAが届ける<br />
-              “美しい島の記憶”
+              ILHA FORMOSAがお届けする<br />
+              本場の味わい
             </h2>
 
             <div className="w-20 h-[1px] bg-[#123646]/25 mx-auto mt-8" />
 
             <div className="font-ja mt-10 text-[14px] md:text-[15px] leading-[2.25] tracking-[0.08em] text-[#123646] space-y-4 max-w-2xl mx-auto">
               <p>
-                私たちは、台湾料理を通して、香り・時間・発見のある食体験をお届けします。
+                台湾から取り寄せた茶葉や香辛料、薬膳素材を取り入れながら、現地で親しまれてきた味わいを大切にしています。ただ料理を楽しむだけでなく、台湾で食卓を囲むようなあたたかさや、香りまで楽しめるひとときをお届けします。
               </p>
-              <p>
-                ただ食べるだけではなく、心に残るひとときを過ごしていただくことを大切にしています。
-              </p>
+
             </div>
           </motion.div>
 
@@ -344,6 +341,72 @@ export function About() {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </div>
+      </section>
+      {/* ===== Interior Section：Redesign ===== */}
+      <section className="relative px-6 md:px-12 lg:px-20 py-24 md:py-36 overflow-hidden">
+        <div className="pointer-events-none absolute top-0 left-0 w-[260px] h-[260px] rounded-full bg-[#B08A6A]/8 -translate-x-1/2 -translate-y-1/3" />
+        <div className="pointer-events-none absolute bottom-10 right-0 w-[360px] h-[360px] rounded-full bg-[#123646]/5 translate-x-1/3" />
+
+        <div className="relative max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-12 lg:gap-20 items-center">
+            {/* 写真エリア */}
+            <motion.div
+              initial={{ opacity: 0, x: -36 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              className="relative min-h-[520px] md:min-h-[650px] order-2 lg:order-1"
+            >
+              <div className="absolute left-0 top-0 w-[78%] h-[440px] md:h-[540px] overflow-hidden rounded-tl-[48px] rounded-br-[8px] shadow-[0_18px_45px_rgba(18,54,70,0.10)]">
+                <ImageWithFallback
+                  src={interiorImage1}
+                  alt="ILHA FORMOSAのカウンター席"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              <div className="absolute right-0 bottom-6 w-[66%] h-[290px] md:h-[360px] overflow-hidden rounded-tr-[22px] rounded-bl-[8px] shadow-[0_20px_45px_rgba(18,54,70,0.14)]">
+                <ImageWithFallback
+                  src={interiorImage2}
+                  alt="ILHA FORMOSAのテーブル席"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+            </motion.div>
+
+            {/* テキストエリア */}
+            <motion.div
+              initial={{ opacity: 0, x: 36 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1 }}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2"
+            >
+              <p className="font-en-medium text-[12px] md:text-[13px] tracking-[0.32em] text-[#B08A6A] mb-8">
+                INTERIOR
+              </p>
+
+              <h2 className="text-[30px] md:text-[42px] leading-[1.75] tracking-[0.1em] text-[#123646] font-mincho mb-10">
+                落ち着きと余白を感じる、<br />
+                隠れ家的な空間
+              </h2>
+
+              <div className="w-16 h-[1px] bg-[#B08A6A] mb-10" />
+
+              <div className="font-ja text-[14px] md:text-[15px] leading-[2.35] tracking-[0.08em] text-[#123646] space-y-4 max-w-xl">
+                <p>
+                  アンティークとモダンが調和した、落ち着きのある隠れ家的な店内。
+                </p>
+                <p>
+                  ゆとりを持たせた席配置で、車椅子やベビーカーをご利用の方、小さなお子様連れのお客様にも安心してお過ごしいただけます。
+                </p>
+                <p>
+                  軽いお食事からコース料理まで幅広くご用意しておりますので、普段のお食事はもちろん、女子会やご宴会など、さまざまなシーンでご利用ください。
+                </p>
+              </div>
+            </motion.div>
           </div>
         </div>
       </section>
