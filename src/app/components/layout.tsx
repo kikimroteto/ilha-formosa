@@ -59,7 +59,7 @@ export function Layout() {
               {/* ロゴ：フォントそのまま */}
               <Link
                 to="/"
-                className={`text-[19px] md:text-2xl tracking-[0.24em] md:tracking-[0.3em] text-white hover:text-white/70 transition duration-500 ${
+                className={`text-[19px] md:text-2xl tracking-[0.24em] md:tracking-[0.3em] text-white transition duration-500 hover:opacity-60 ${
                   open ? "opacity-0 pointer-events-none" : "opacity-100"
                 }`}
               >
@@ -72,7 +72,7 @@ export function Layout() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Instagram"
-                className={`mr-16 md:mr-20 text-white hover:text-white/70 transition duration-500 ${
+                className={`mr-16 md:mr-20 text-white transition duration-500 hover:opacity-60 ${
                   open ? "opacity-0 pointer-events-none" : "opacity-100"
                 }`}
               >
@@ -111,7 +111,7 @@ export function Layout() {
 
               {/* ハンバーガー：MVでは白、MV以外では濃紺、メニュー展開中は白 */}
               <button
-                className={`fixed top-5 right-6 md:top-8 md:right-12 z-[1001] flex flex-col items-center justify-center transition-colors duration-300 ${
+                className={`fixed top-5 right-6 md:top-8 md:right-12 z-[1001] flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-1 ${
                   open || isMvArea ? "text-white" : "text-[#123646]"
                 }`}
                 onClick={() => setOpen(!open)}
@@ -168,7 +168,7 @@ export function Layout() {
               <Link
                 to="/"
                 onClick={() => setOpen(false)}
-                className="text-center"
+                className="text-center transition duration-500 hover:scale-105 hover:opacity-70"
               >
                 <div className="text-[46px] tracking-[0.22em] leading-[1.05] font-semibold">
                   ILHA
@@ -182,7 +182,7 @@ export function Layout() {
                 href="https://www.instagram.com/ilha_formosa_kyoto"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-28 relative z-[1002] inline-flex items-center justify-center"
+                className="mt-28 relative z-[1002] inline-flex items-center justify-center transition duration-500 hover:scale-110 hover:opacity-70"
                 aria-label="Instagram"
               >
                 <svg
@@ -227,12 +227,12 @@ export function Layout() {
                     key={item.path}
                     to={item.path}
                     onClick={() => setOpen(false)}
-                    className="block"
+                    className="group block transition duration-300 hover:translate-x-3 hover:opacity-70"
                   >
-                    <div className="font-en-medium text-[34px] tracking-[0.08em] leading-none">
+                    <div className="font-en-medium text-[34px] tracking-[0.08em] leading-none transition duration-300 group-hover:tracking-[0.16em]">
                       {item.en}
                     </div>
-                    <div className="font-ja mt-3 text-[14px] tracking-[0.1em] leading-none font-semibold">
+                    <div className="font-ja mt-3 text-[14px] tracking-[0.1em] leading-none font-semibold transition duration-300 group-hover:tracking-[0.16em]">
                       {item.ja}
                     </div>
                   </Link>
@@ -254,7 +254,7 @@ export function Layout() {
               <Link
                 to="/"
                 onClick={() => setOpen(false)}
-                className="mb-12"
+                className="mb-12 transition duration-500 hover:opacity-70 hover:scale-105"
               >
                 <div className="text-[23px] tracking-[0.20em] leading-[1.15] font-semibold">
                   ILHA
@@ -271,12 +271,12 @@ export function Layout() {
                     key={item.path}
                     to={item.path}
                     onClick={() => setOpen(false)}
-                    className="block text-center"
+                    className="group block text-center transition duration-300 hover:opacity-70 hover:scale-105"
                   >
-                    <div className="font-en-medium text-[26px] tracking-[0.05em] leading-none">
+                    <div className="font-en-medium text-[26px] tracking-[0.05em] leading-none transition duration-300 group-hover:tracking-[0.12em]">
                       {item.en}
                     </div>
-                    <div className="font-ja mt-2 text-[11px] tracking-[0.08em] leading-none font-semibold">
+                    <div className="font-ja mt-2 text-[11px] tracking-[0.08em] leading-none font-semibold transition duration-300 group-hover:tracking-[0.12em]">
                       {item.ja}
                     </div>
                   </Link>
@@ -288,7 +288,7 @@ export function Layout() {
                 href="https://www.instagram.com/ilha_formosa_kyoto"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-12 relative z-[1002] inline-flex items-center justify-center"
+                className="mt-12 relative z-[1002] inline-flex items-center justify-center transition duration-500 hover:scale-110 hover:opacity-70"
                 aria-label="Instagram"
               >
                 <svg
@@ -377,7 +377,7 @@ export function Layout() {
                   <Link
                     key={item.path}
                     to={item.path}
-                    className="hover:text-white transition duration-300"
+                    className="transition duration-300 hover:text-white hover:opacity-80"
                   >
                     {item.ja}
                   </Link>

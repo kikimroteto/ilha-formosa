@@ -212,13 +212,13 @@ export function NewsDetail() {
                 )}
 
                 <div className="mt-14 pt-10 border-t border-[#123646]/12 text-center">
-                  <Link
+                <Link
                     to="/news"
-                    className="font-ja inline-flex items-center justify-center border border-[#123646] px-8 py-4 text-[13px] tracking-[0.12em] text-[#123646] hover:bg-[#123646] hover:text-white transition duration-300"
-                  >
+                    className="font-ja inline-flex items-center justify-center gap-4 rounded-full border border-[#123646] px-9 py-4 text-[13px] tracking-[0.12em] text-[#123646] hover:bg-[#123646] hover:text-white transition duration-300"
+                >
                     お知らせ一覧へ戻る
-                    <span className="font-en-medium ml-4">→</span>
-                  </Link>
+                    <span className="font-en-medium ml-1">＞</span>
+                </Link>
                 </div>
               </motion.article>
 

@@ -35,3 +35,7 @@ button, input, label {
 .font-ja {
   font-family: 'Noto Sans JP', sans-serif;
 }
+
+.font-mincho {
+  font-family: "dnp-shuei-mincho-pr6n", serif;
+}

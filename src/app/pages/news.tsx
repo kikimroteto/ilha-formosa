@@ -35,6 +35,19 @@ function formatDateParts(date: string) {
   };
 }
 
+function isNewPost(date: string) {
+  const postDate = new Date(date);
+  const today = new Date();
+
+  postDate.setHours(0, 0, 0, 0);
+  today.setHours(0, 0, 0, 0);
+
+  const diffTime = today.getTime() - postDate.getTime();
+  const diffDays = diffTime / (1000 * 60 * 60 * 24);
+
+  return diffDays <= 30;
+}
+
 export function News() {
   const [newsList, setNewsList] = useState<NewsItem[]>([]);
   const [loading, setLoading] = useState(true);
@@ -117,13 +130,17 @@ export function News() {
             viewport={{ once: true }}
             className="text-center mb-14 md:mb-20"
           >
-            <p className="font-en-medium text-[12px] md:text-[13px] tracking-[0.34em] text-[#B08A6A] mb-5">
-              NEWS
+            <p className="font-ja text-[12px] md:text-[14px] tracking-[0.28em] text-[#B08A6A] mb-5">
+              最新消息
             </p>
 
             <h2 className="text-[34px] md:text-[52px] font-en-medium tracking-[0.08em] text-[#123646] leading-none">
-              news
+              NEWS
             </h2>
+
+            <p className="font-ja mt-4 text-[13px] md:text-[15px] tracking-[0.18em] text-[#B08A6A]">
+              お知らせ
+            </p>
 
             <div className="w-16 h-[1px] bg-[#123646]/25 mx-auto mt-8" />
           </motion.div>
@@ -139,9 +156,10 @@ export function News() {
                 現在、お知らせはありません。
               </p>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
+              <div className="grid grid-cols-2 xl:grid-cols-3 gap-x-3 gap-y-9 md:gap-8">
                 {newsList.map((item, index) => {
                   const { year, month, day } = formatDateParts(item.date);
+                  const showNewPost = isNewPost(item.date);
 
                   return (
                     <motion.article
@@ -153,7 +171,7 @@ export function News() {
                     >
                       <Link
                         to={`/news/${item.slug || item.id}`}
-                        className="group block h-full bg-white/70 border border-[#123646]/10 transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(18,54,70,0.08)]"
+                        className="group block h-full bg-white/70 border border-[#123646]/10 overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(18,54,70,0.08)]"
                       >
                         {/* 画像 */}
                         <div className="relative aspect-[4/3] overflow-hidden bg-[#EFE9E3]">
@@ -166,12 +184,12 @@ export function News() {
                           ) : (
                             <div className="w-full h-full flex items-center justify-center bg-[#EFE9E3] px-6">
                               <div className="text-center">
-                                <div className="text-[#123646] font-en-medium text-[24px] md:text-[30px] leading-[1.05] tracking-[0.08em]">
+                                <div className="text-[#123646] font-en-medium text-[20px] md:text-[30px] leading-[1.05] tracking-[0.08em]">
                                   ILHA
                                   <br />
                                   FORMOSA
                                 </div>
-                                <div className="mt-5 text-[#B08A6A] text-[11px] tracking-[0.35em]">
+                                <div className="mt-5 text-[#B08A6A] text-[10px] md:text-[11px] tracking-[0.35em]">
                                   NEWS
                                 </div>
                               </div>
@@ -180,30 +198,32 @@ export function News() {
 
                           <div className="absolute inset-0 bg-gradient-to-t from-[#123646]/45 via-transparent to-transparent opacity-70" />
 
-                          <div className="absolute left-5 bottom-5 text-white">
-                            <p className="font-en-medium text-[11px] tracking-[0.24em] text-white/80">
+                          <div className="absolute left-4 md:left-5 bottom-4 md:bottom-5 text-white">
+                            <p className="font-en-medium text-[10px] md:text-[11px] tracking-[0.24em] text-white/80">
                               {year}
                             </p>
-                            <p className="font-en-medium mt-1 text-[28px] md:text-[32px] tracking-[0.08em] leading-none">
+                            <p className="font-en-medium mt-1 text-[24px] md:text-[32px] tracking-[0.08em] leading-none">
                               {month}.{day}
                             </p>
                           </div>
                         </div>
 
                         {/* テキスト */}
-                        <div className="px-6 py-6 md:px-7 md:py-7 min-h-[155px] flex flex-col">
-                          <div className="mb-5">
-                            <p className="font-en-medium text-[11px] tracking-[0.18em] text-[#B08A6A]">
-                              NEW POST
-                            </p>
+                        <div className="px-3 py-4 md:px-7 md:py-7 min-h-[120px] md:min-h-[155px] flex flex-col">
+                          <div className="mb-4 md:mb-5 min-h-[14px]">
+                            {showNewPost && (
+                              <p className="font-en-medium text-[9px] md:text-[11px] tracking-[0.18em] text-[#B08A6A]">
+                                NEW POST
+                              </p>
+                            )}
                           </div>
 
-                          <h3 className="font-ja text-[15px] md:text-[16px] leading-[1.9] tracking-[0.04em] text-[#123646] group-hover:text-[#B08A6A] transition duration-300">
+                          <h3 className="font-ja text-[12px] md:text-[16px] leading-[1.8] md:leading-[1.9] tracking-[0.04em] text-[#123646] group-hover:text-[#B08A6A] transition duration-300">
                             {item.title}
                           </h3>
 
-                          <div className="mt-auto pt-6 flex items-center gap-3 text-[#123646]/70 group-hover:text-[#B08A6A] transition duration-300">
-                            <span className="font-en-medium text-[11px] tracking-[0.16em]">
+                          <div className="mt-auto pt-5 md:pt-6 flex items-center gap-3 text-[#123646]/70 group-hover:text-[#B08A6A] transition duration-300">
+                            <span className="font-en-medium text-[10px] md:text-[11px] tracking-[0.16em]">
                               READ MORE
                             </span>
                             <span className="w-7 h-[1px] bg-current transition duration-300 group-hover:w-10" />

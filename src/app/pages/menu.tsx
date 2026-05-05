@@ -322,7 +322,7 @@ export function Menu() {
                 品味套餐
               </p>
 
-              <h2 className="font-en-medium text-[34px] md:text-[46px] text-[#123646] tracking-[0.16em] font-light">
+              <h2 className="font-en-medium text-[30px] md:text-[46px] text-[#123646] tracking-[0.16em] font-light">
                 COURSE
               </h2>
 

@@ -131,10 +131,10 @@ export function Access() {
                   href="https://tabelog.com/kyoto/A2601/A260201/26041402/?msockid=3abd8917899b6dd73a1d9c6588106c64"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-ja inline-flex items-center justify-center border border-[#123646] px-8 py-4 text-[13px] tracking-[0.12em] text-[#123646] hover:bg-[#123646] hover:text-white transition duration-300"
+                  className="font-ja inline-flex items-center justify-center gap-4 rounded-full border border-[#123646] px-9 py-4 text-[13px] tracking-[0.12em] text-[#123646] hover:bg-[#123646] hover:text-white transition duration-300"
                 >
                   ご予約はこちら
-                  <span className="font-en-medium ml-4">→</span>
+                  <span className="font-en-medium ml-1">＞</span>
                 </a>
               </div>
             </motion.div>

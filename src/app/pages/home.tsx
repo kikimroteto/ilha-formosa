@@ -13,9 +13,39 @@ import galleryImage5 from "../../imports/image-8.png";
 import galleryImage6 from "../../imports/image-2.png";
 import galleryImage7 from "../../imports/image-3.png";
 
+type MicroCMSImage = {
+  url: string;
+  height?: number;
+  width?: number;
+};
+
+type NewsItem = {
+  id: string;
+  title: string;
+  date: string;
+  image?: MicroCMSImage;
+  slug?: string;
+};
+
+type NewsResponse = {
+  contents: NewsItem[];
+};
+
+function formatDateParts(date: string) {
+  const dateObj = new Date(date);
+  const month = String(dateObj.getMonth() + 1).padStart(2, "0");
+  const day = String(dateObj.getDate()).padStart(2, "0");
+
+  return {
+    month,
+    day,
+  };
+}
+
 export function Home() {
   const heroImages = [heroImage1, heroImage2, heroImage3];
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [newsList, setNewsList] = useState<NewsItem[]>([]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,6 +54,35 @@ export function Home() {
 
     return () => clearInterval(interval);
   }, [heroImages.length]);
+
+  useEffect(() => {
+    const fetchNews = async () => {
+      try {
+        const serviceDomain = import.meta.env.VITE_MICROCMS_SERVICE_DOMAIN;
+        const apiKey = import.meta.env.VITE_MICROCMS_API_KEY;
+
+        const response = await fetch(
+          `https://${serviceDomain}.microcms.io/api/v1/news?orders=-date&limit=4`,
+          {
+            headers: {
+              "X-MICROCMS-API-KEY": apiKey,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error("ニュースの取得に失敗しました");
+        }
+
+        const data: NewsResponse = await response.json();
+        setNewsList(data.contents);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchNews();
+  }, []);
 
   const galleryImages = [
     galleryImage1,
@@ -86,7 +145,7 @@ export function Home() {
                 CONCEPT
               </p>
 
-              <h2 className="mt-6 text-[34px] md:text-[52px] leading-[1.65] tracking-[0.14em] text-[#123646] font-light">
+              <h2 className="mt-6 text-[34px] md:text-[52px] leading-[1.65] tracking-[0.14em] text-[#123646] font-mincho">
                 台湾の香りを、<br />
                 京都の時間へ。
               </h2>
@@ -103,10 +162,10 @@ export function Home() {
               <div className="mt-10">
                 <Link
                   to="/about"
-                  className="font-ja inline-flex items-center gap-4 border border-[#123646] px-8 py-4 text-[13px] tracking-[0.12em] text-[#123646] hover:bg-[#123646] hover:text-white transition duration-300"
+                  className="font-ja inline-flex items-center justify-center gap-4 rounded-full border border-[#123646] px-9 py-4 text-[13px] tracking-[0.12em] text-[#123646] hover:bg-[#123646] hover:text-white transition duration-300"
                 >
                   私たちについて
-                  <span className="font-en-medium">→</span>
+                  <span className="font-en-medium ml-1">＞</span>
                 </Link>
               </div>
             </motion.div>
@@ -145,7 +204,7 @@ export function Home() {
                 MENU
               </p>
 
-              <h2 className="mt-5 text-[34px] md:text-[50px] tracking-[0.14em] text-[#123646] font-light">
+              <h2 className="mt-5 text-[34px] md:text-[50px] tracking-[0.14em] text-[#123646] font-mincho">
                 お料理
               </h2>
             </div>
@@ -217,10 +276,10 @@ export function Home() {
           <div className="mt-12 md:mt-14 text-center">
             <Link
               to="/menu"
-              className="font-ja inline-flex items-center gap-4 border border-[#123646] px-9 py-4 text-[13px] tracking-[0.12em] text-[#123646] hover:bg-[#123646] hover:text-white transition duration-300"
+              className="font-ja inline-flex items-center justify-center gap-4 rounded-full border border-[#123646] px-9 py-4 text-[13px] tracking-[0.12em] text-[#123646] hover:bg-[#123646] hover:text-white transition duration-300"
             >
               お料理を見る
-              <span className="font-en-medium">→</span>
+              <span className="font-en-medium ml-1">＞</span>
             </Link>
           </div>
         </div>
@@ -249,7 +308,7 @@ export function Home() {
               EXPERIENCE
             </p>
 
-            <h2 className="mt-6 text-[30px] md:text-[44px] leading-[1.7] tracking-[0.14em] font-light">
+            <h2 className="mt-6 text-[30px] md:text-[44px] leading-[1.7] tracking-[0.14em] font-mincho">
               食事の時間に、<br className="md:hidden" />
               小さな旅を。
             </h2>
@@ -263,6 +322,120 @@ export function Home() {
               </p>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* ================= TOPICS ================= */}
+      <section className="relative px-6 md:px-10 py-20 md:py-28 overflow-hidden">
+        <div className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 hidden md:block w-[300px] h-[300px] rounded-[70px] rotate-45 bg-[#B08A6A]/6" />
+
+        <div className="relative max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 md:mb-16"
+          >
+              <p className="font-en-medium text-[12px] md:text-[13px] tracking-[0.34em] text-[#B08A6A] mb-5">
+                最新消息
+              </p>
+
+              <h2 className="font-en-medium text-[30px] md:text-[46px] text-[#123646] tracking-[0.16em] font-light">
+                NEWS
+              </h2>
+
+              <p className="font-ja mt-4 text-[11px] md:text-[12px] text-[#B08A6A] tracking-[0.28em]">
+                お知らせ
+              </p>
+          </motion.div>
+
+          {newsList.length > 0 && (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-6 max-w-6xl mx-auto">
+              {newsList.map((item, index) => {
+                const { month, day } = formatDateParts(item.date);
+                const year = new Date(item.date).getFullYear();
+
+                return (
+                  <motion.article
+                    key={item.id}
+                    initial={{ opacity: 0, y: 18 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.65, delay: index * 0.08 }}
+                    viewport={{ once: true }}
+                  >
+                    <Link
+                      to={`/news/${item.slug || item.id}`}
+                      className="group block h-full bg-white/70 border border-[#123646]/10 overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(18,54,70,0.08)]"
+                    >
+                      <div className="relative aspect-[4/3] overflow-hidden bg-[#EFE9E3]">
+                        {item.image?.url ? (
+                          <ImageWithFallback
+                            src={item.image.url}
+                            alt={item.title}
+                            className="w-full h-full object-cover transition duration-[1.2s] group-hover:scale-105"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-[#EFE9E3] px-4">
+                            <div className="text-center">
+                              <div className="text-[#123646] font-en-medium text-[18px] md:text-[26px] leading-[1.05] tracking-[0.08em]">
+                                ILHA
+                                <br />
+                                FORMOSA
+                              </div>
+                              <div className="mt-4 text-[#B08A6A] text-[10px] tracking-[0.28em]">
+                                NEWS
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#123646]/55 via-transparent to-transparent opacity-75" />
+
+                        <div className="absolute left-4 bottom-4 text-white">
+                          <p className="font-en-medium text-[10px] md:text-[11px] tracking-[0.18em] leading-none">
+                            {year}
+                          </p>
+                          <p className="font-en-medium mt-1 text-[24px] md:text-[30px] tracking-[0.06em] leading-none">
+                            {month}.{day}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="px-4 py-5 md:px-5 md:py-6 min-h-[130px] md:min-h-[150px] flex flex-col">
+                        <div className="mb-4">
+                          <p className="font-en-medium text-[10px] md:text-[11px] tracking-[0.18em] text-[#B08A6A]">
+                            NEW POST
+                          </p>
+                        </div>
+
+                        <h3 className="font-ja text-[12px] md:text-[14px] leading-[1.8] md:leading-[1.9] tracking-[0.04em] text-[#123646] group-hover:text-[#B08A6A] transition duration-300">
+                          {item.title}
+                        </h3>
+
+                        <div className="mt-auto pt-5 flex items-center gap-3 text-[#123646]/70 group-hover:text-[#B08A6A] transition duration-300">
+                          <span className="font-en-medium text-[10px] md:text-[11px] tracking-[0.16em]">
+                            READ MORE
+                          </span>
+                          <span className="w-7 h-[1px] bg-current transition duration-300 group-hover:w-10" />
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.article>
+                );
+              })}
+            </div>
+          )}
+
+          <div className="mt-12 md:mt-16 text-center">
+            <Link
+              to="/news"
+              className="font-ja mt-8 inline-flex items-center justify-center gap-4 rounded-full border border-[#123646] px-9 py-4 text-[13px] tracking-[0.12em] text-[#123646] hover:bg-[#123646] hover:text-white transition duration-300"
+            >
+              お知らせを見る
+              <span className="font-en-medium ml-1">＞</span>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -280,7 +453,7 @@ export function Home() {
               GALLERY
             </p>
 
-            <h2 className="mt-5 text-[32px] md:text-[46px] tracking-[0.14em] text-[#123646] font-light">
+            <h2 className="mt-5 text-[32px] md:text-[46px] tracking-[0.14em] text-[#123646] font-mincho">
               料理と空間
             </h2>
           </motion.div>
@@ -318,43 +491,15 @@ export function Home() {
         </div>
       </section>
 
-      {/* ================= NEWS / ACCESS ================= */}
+      {/* ================= ACCESS CTA ================= */}
       <section className="px-6 md:px-10 pb-24 md:pb-32">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 border-y border-[#123646]/14">
+        <div className="max-w-6xl mx-auto border-y border-[#123646]/14">
           <motion.div
             initial={{ opacity: 0, y: 22 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75 }}
             viewport={{ once: true }}
-            className="p-8 md:p-10 bg-white/35"
-          >
-            <p className="font-en-medium text-[12px] tracking-[0.38em] text-[#B08A6A]">
-              NEWS
-            </p>
-
-            <h2 className="mt-4 text-[28px] tracking-[0.12em] text-[#123646] font-light">
-              お知らせ
-            </h2>
-
-            <p className="font-ja mt-5 text-[13px] leading-[2] tracking-[0.06em] text-[#123646]/70">
-              営業日や季節のメニューなど、ご来店前に知っていただきたい情報を掲載しています。
-            </p>
-
-            <Link
-              to="/news"
-              className="font-ja mt-8 inline-flex items-center gap-4 text-[13px] tracking-[0.12em] text-[#123646] hover:text-[#B08A6A] transition duration-300"
-            >
-              最新情報を見る
-              <span className="font-en-medium">→</span>
-            </Link>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75, delay: 0.08 }}
-            viewport={{ once: true }}
-            className="p-8 md:p-10 bg-white/35 md:border-l border-[#123646]/14"
+            className="p-8 md:p-10 bg-white/35 text-center"
           >
             <p className="font-en-medium text-[12px] tracking-[0.38em] text-[#B08A6A]">
               ACCESS
@@ -370,10 +515,10 @@ export function Home() {
 
             <Link
               to="/access"
-              className="font-ja mt-8 inline-flex items-center gap-4 text-[13px] tracking-[0.12em] text-[#123646] hover:text-[#B08A6A] transition duration-300"
+              className="font-ja mt-8 inline-flex items-center justify-center gap-4 rounded-full border border-[#123646] px-9 py-4 text-[13px] tracking-[0.12em] text-[#123646] hover:bg-[#123646] hover:text-white transition duration-300"
             >
               店舗情報を見る
-              <span className="font-en-medium">→</span>
+              <span className="font-en-medium ml-1">＞</span>
             </Link>
           </motion.div>
         </div>

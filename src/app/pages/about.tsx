@@ -84,7 +84,7 @@ export function About() {
                 </p>
               </div>
 
-              <h2 className="text-[32px] md:text-[43px] leading-[1.85] tracking-[0.13em] text-[#123646] font-light mb-16">
+              <h2 className="text-[32px] md:text-[43px] leading-[1.85] tracking-[0.13em] text-[#123646] font-mincho mb-16">
                 台湾の、<br />
                 あたたかな記憶を<br />
                 京都の一皿へ。
@@ -130,7 +130,7 @@ export function About() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              className="px-6 md:px-0 lg:pl-8"
+              className="px-6 md:px-0 lg:pl-8 lg:order-2"
             >
               <div className="font-ja text-[14px] md:text-[15px] leading-[2.45] tracking-[0.08em] text-[#123646] space-y-4 max-w-xl">
                 <p>台湾の食卓には、朝も夜も、いつも人の気配があります。</p>
@@ -154,7 +154,7 @@ export function About() {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 1 }}
               viewport={{ once: true }}
-              className="grid grid-cols-2 gap-3 md:gap-4 px-6 md:px-0"
+              className="grid grid-cols-2 gap-3 md:gap-4 px-6 md:px-0 lg:order-1"
             >
               <div className="row-span-2 overflow-hidden">
                 <ImageWithFallback
@@ -194,7 +194,7 @@ export function About() {
             viewport={{ once: true }}
             className="bg-white/75 rounded-[28px] md:rounded-[36px] px-6 md:px-16 lg:px-24 py-16 md:py-24 text-center"
           >
-            <h2 className="text-[31px] md:text-[42px] tracking-[0.12em] leading-relaxed text-[#123646] font-light">
+            <h2 className="text-[25px] md:text-[42px] tracking-[0.12em] leading-relaxed text-[#123646] font-mincho">
               ILHA FORMOSAとは？
             </h2>
 
@@ -202,22 +202,20 @@ export function About() {
               WHAT IS ILHA FORMOSA?
             </p>
 
-            <div className="font-ja mt-12 text-[14px] md:text-[15px] leading-[2.25] tracking-[0.08em] text-[#123646] space-y-4">
+            <div className="font-ja mt-12 mx-auto max-w-[780px] text-[14px] md:text-[15px] leading-[2.25] tracking-[0.08em] text-[#123646] space-y-1.3">
               <p>
-                「FORMOSA」は、かつて台湾が「美しい島」と呼ばれたことに由来します。
+                「ILHA FORMOSA」は、ポルトガル語で「美しい島」と呼ばれたことに由来します。
               </p>
               <p>
-                海を渡って育まれてきた食文化、人を迎えるあたたかさ、香り豊かな料理。
+                かつて台湾がそう呼ばれたように、海を渡って育まれてきた食文化、人を迎えるあたたかさ、香り豊かな料理には、台湾ならではの魅力があります。
               </p>
               <p>
-                その魅力を京都の街で楽しんでいただきたいという想いから、
+                ILHA FORMOSAは、その“美しい島”の食の記憶を、京都の街でゆっくり楽しんでいただきたいという想いから生まれました。一皿の料理を通して、台湾の香りとあたたかな時間をお届けします。
               </p>
-              <p>
-                ILHA FORMOSAは生まれました。
-              </p>
+
             </div>
 
-            <div className="mt-16 overflow-hidden max-w-3xl mx-auto">
+            <div className="mt-14 overflow-hidden max-w-3xl mx-auto">
               <ImageWithFallback
                 src={buildingImage}
                 alt="ILHA FORMOSAの建物"
@@ -247,7 +245,7 @@ export function About() {
               OUR VALUE
             </p>
 
-            <h2 className="text-[32px] md:text-[46px] leading-[1.6] tracking-[0.09em] text-[#123646] font-light">
+            <h2 className="text-[32px] md:text-[46px] leading-[1.6] tracking-[0.09em] text-[#123646] font-mincho">
               ILHA FORMOSAが届ける<br />
               “美しい島の記憶”
             </h2>
