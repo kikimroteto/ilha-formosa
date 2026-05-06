@@ -16,8 +16,8 @@ export const router = createBrowserRouter([
       { path: "menu", Component: Menu },
       { path: "about", Component: About },
       { path: "access", Component: Access },
-      { path: "news", Component: News },    
-      { path: "news/:id", Component: NewsDetail },  
+      { path: "news", Component: News },
+      { path: "news/:id", Component: NewsDetail },
     ],
   },
 ]);
