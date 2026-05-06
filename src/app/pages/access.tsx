@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { MapPin, Phone, Clock, Train, Car, CalendarCheck } from "lucide-react";
 import type { ReactNode } from "react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import pontoImage from "../../imports/ponto.jpeg";
 
 export function Access() {
   return (
@@ -14,7 +15,7 @@ export function Access() {
             alt="ILHA FORMOSA Access"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-black/40" />
         </div>
 
         <div className="relative h-full flex items-center justify-center text-center px-6">
@@ -26,7 +27,7 @@ export function Access() {
             <h1 className="text-4xl md:text-5xl mb-6 text-white tracking-[0.3em] font-light">
               ご案内
             </h1>
-            <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent mx-auto mb-8"></div>
+            <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent mx-auto mb-8" />
             <p className="text-base md:text-lg text-white/90 tracking-[0.2em] font-light">
               静かな路地の先に、そっと佇む一軒
             </p>
@@ -49,7 +50,7 @@ export function Access() {
                 ACCESS
               </p>
 
-              <h2 className="mt-5 text-[40px] md:text-[68px] tracking-[0.14em] text-[#123646] font-light">
+              <h2 className="mt-5 text-[34px] md:text-[52px] leading-[1.55] tracking-[0.14em] text-[#123646] font-mincho">
                 店舗案内
               </h2>
             </div>
@@ -65,23 +66,23 @@ export function Access() {
       </section>
 
       {/* ===== Store Information ===== */}
-      <section className="px-6 md:px-10 pb-20 md:pb-28">
+      <section id="information" className="px-6 md:px-10 pb-20 md:pb-28">
         <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 md:gap-16 items-start">
+          <div className="grid lg:grid-cols-[1.02fr_0.98fr] gap-10 md:gap-16 items-stretch">
             {/* 左：店舗情報 */}
             <motion.div
               initial={{ opacity: 0, x: -24 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.75 }}
               viewport={{ once: true }}
-              className="bg-white/60 border border-[#123646]/10 px-6 md:px-10 py-8 md:py-10 shadow-[0_16px_44px_rgba(0,0,0,0.03)]"
+              className="bg-white/62 border border-[#123646]/10 px-6 md:px-10 py-9 md:py-11 shadow-[0_18px_48px_rgba(18,54,70,0.04)]"
             >
-              <div className="mb-10">
+              <div className="mb-9 md:mb-10">
                 <p className="font-en-medium text-[12px] tracking-[0.4em] text-[#B08A6A]">
                   INFORMATION
                 </p>
 
-                <h3 className="mt-4 text-[28px] md:text-[36px] tracking-[0.14em] text-[#123646] font-light">
+                <h3 className="mt-4 text-[30px] md:text-[38px] tracking-[0.14em] text-[#123646] font-mincho">
                   基本情報
                 </h3>
               </div>
@@ -100,7 +101,7 @@ export function Access() {
                   link="tel:05055975300"
                 />
 
-                <div className="py-7 grid md:grid-cols-[130px_1fr] gap-4 md:gap-8">
+                <div className="py-6 md:py-7 grid md:grid-cols-[120px_1fr] gap-4 md:gap-8">
                   <div className="flex items-center gap-3 text-[#B08A6A]">
                     <Clock className="w-5 h-5" />
                     <p className="font-ja text-[13px] tracking-[0.16em]">
@@ -109,11 +110,11 @@ export function Access() {
                   </div>
 
                   <div className="font-ja text-[14px] md:text-[15px] leading-[2] tracking-[0.08em] text-[#123646]/78">
-                    <div className="grid grid-cols-[90px_1fr] gap-4">
+                    <div className="grid grid-cols-[76px_1fr] gap-4">
                       <span className="text-[#123646]">ランチ</span>
                       <span>12:00 - 14:30 L.O. 料理14:15</span>
                     </div>
-                    <div className="grid grid-cols-[90px_1fr] gap-4 mt-3">
+                    <div className="grid grid-cols-[76px_1fr] gap-4 mt-2">
                       <span className="text-[#123646]">ディナー</span>
                       <span>17:00 - 22:00 L.O. 料理21:15</span>
                     </div>
@@ -121,6 +122,7 @@ export function Access() {
                 </div>
 
                 <InfoRow
+                  icon={<CalendarCheck className="w-5 h-5" />}
                   label="定休日"
                   value="水曜日　第2・第4火曜日"
                 />
@@ -147,11 +149,11 @@ export function Access() {
               viewport={{ once: true }}
               className="w-full"
             >
-              <div className="overflow-hidden">
+              <div className="relative h-full min-h-[360px] md:min-h-[620px] overflow-hidden rounded-tr-[42px] shadow-[0_18px_48px_rgba(18,54,70,0.08)]">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1771773603048-36a0208ebd6b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxreW90byUyMHN0cmVldCUyMG5pZ2h0JTIwbGFudGVybnMlMjB0cmFkaXRpb25hbHxlbnwxfHx8fDE3NzQ4NzQ1MDJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                  alt="Kyoto Street at Night"
-                  className="w-full h-[360px] md:h-[620px] object-cover"
+                  src={pontoImage}
+                  alt="ILHA FORMOSA周辺の街並み"
+                  className="w-full h-full object-cover"
                 />
               </div>
             </motion.div>
@@ -160,7 +162,7 @@ export function Access() {
       </section>
 
       {/* ===== Map / Access Detail ===== */}
-      <section className="px-6 md:px-10 py-20 md:py-28">
+      <section id="map" className="px-6 md:px-10 py-20 md:py-28">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 22 }}
@@ -173,7 +175,7 @@ export function Access() {
               MAP
             </p>
 
-            <h2 className="mt-5 text-[32px] md:text-[46px] tracking-[0.14em] text-[#123646] font-light">
+            <h2 className="mt-5 text-[32px] md:text-[46px] tracking-[0.14em] text-[#123646] font-mincho">
               アクセス
             </h2>
 
@@ -182,7 +184,7 @@ export function Access() {
             </p>
           </motion.div>
 
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 md:gap-14 items-start">
+          <div className="grid lg:grid-cols-[1.08fr_0.92fr] gap-10 md:gap-14 items-start">
             {/* 地図 */}
             <motion.div
               initial={{ opacity: 0, y: 22 }}
@@ -221,7 +223,7 @@ export function Access() {
                   </p>
                 </div>
 
-                <h3 className="text-[24px] md:text-[30px] tracking-[0.14em] text-[#123646] font-light mb-7">
+                <h3 className="text-[24px] md:text-[30px] tracking-[0.14em] text-[#123646] font-mincho mb-7">
                   最寄り駅
                 </h3>
 
@@ -244,7 +246,7 @@ export function Access() {
                   </p>
                 </div>
 
-                <h3 className="text-[24px] md:text-[30px] tracking-[0.14em] text-[#123646] font-light mb-5">
+                <h3 className="text-[24px] md:text-[30px] tracking-[0.14em] text-[#123646] font-mincho mb-5">
                   お車でお越しの方
                 </h3>
 
@@ -252,7 +254,6 @@ export function Access() {
                   専用駐車場はございません。お車でお越しの方は、近隣の有料駐車場をご利用ください。
                 </p>
               </div>
-
             </motion.div>
           </div>
         </div>
@@ -273,12 +274,10 @@ function InfoRow({
   link?: string;
 }) {
   return (
-    <div className="py-7 grid md:grid-cols-[130px_1fr] gap-4 md:gap-8">
+    <div className="py-6 md:py-7 grid md:grid-cols-[120px_1fr] gap-4 md:gap-8">
       <div className="flex items-center gap-3 text-[#B08A6A]">
         {icon && icon}
-        <p className="font-ja text-[13px] tracking-[0.16em]">
-          {label}
-        </p>
+        <p className="font-ja text-[13px] tracking-[0.16em]">{label}</p>
       </div>
 
       {link ? (
@@ -297,13 +296,7 @@ function InfoRow({
   );
 }
 
-function RouteRow({
-  station,
-  time,
-}: {
-  station: string;
-  time: string;
-}) {
+function RouteRow({ station, time }: { station: string; time: string }) {
   return (
     <div className="py-5 flex items-center justify-between gap-6">
       <p className="font-ja text-[14px] md:text-[15px] tracking-[0.1em] text-[#123646]">

@@ -7,7 +7,6 @@ import kawamuraImage from "../../imports/kawamura.jpg";
 import interiorImage1 from "../../imports/interior1.jpg";
 import interiorImage2 from "../../imports/interior2.jpg";
 import crabImage from "../../imports/crab.jpeg";
-import image5 from "../../imports/image-5.png";
 import image2 from "../../imports/image-2.png";
 import ownerImage from "../../imports/owner.png";
 import yanzu from "../../imports/yanzu.jpg";
@@ -17,12 +16,12 @@ export function About() {
   return (
     <div className="min-h-screen bg-transparent overflow-x-hidden text-[#123646]">
       {/* Hero Section */}
-      <section className="relative h-[58vh] min-h-[480px]">
+      <section className="relative h-[60vh] min-h-[500px]">
         <div className="absolute inset-0">
           <ImageWithFallback
-             src={ownerImage}
-             alt="ILHA FORMOSAのオーナー"
-             className="w-full h-full object-cover"
+            src={ownerImage}
+            alt="ILHA FORMOSAのオーナー"
+            className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/40" />
         </div>
@@ -45,7 +44,10 @@ export function About() {
       </section>
 
       {/* ===== Concept Section ===== */}
-      <section className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28">
+      <section
+        id="concept"
+        className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 scroll-mt-28"
+      >
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-[140px_0.95fr_1.15fr] gap-10 lg:gap-14 items-center">
             {/* 左の縦書き */}
@@ -244,7 +246,10 @@ export function About() {
       </section>
 
       {/* ===== Value Section ===== */}
-      <section className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden">
+      <section
+        id="our-value"
+        className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden scroll-mt-28"
+      >
         <div className="relative max-w-6xl mx-auto">
           {/* 見出し */}
           <motion.div
@@ -361,7 +366,7 @@ export function About() {
               viewport={{ once: true }}
               className="relative min-h-[360px] md:min-h-[560px] order-2 lg:order-1"
             >
-              <div className="absolute left-0 top-6 w-[86%] h-[260px] md:w-[76%] md:h-[430px] overflow-hidden rounded-tl-[36px] md:rounded-tl-[48px] rounded-br-[8px] shadow-[0_18px_45px_rgba(18,54,70,0.10)]">
+              <div className="absolute left-0 top-0 w-[88%] h-[290px] md:w-[78%] md:h-[450px] overflow-hidden rounded-tl-[36px] md:rounded-tl-[48px] rounded-br-[8px] shadow-[0_18px_45px_rgba(18,54,70,0.10)]">
                 <ImageWithFallback
                   src={interiorImage1}
                   alt="ILHA FORMOSAのカウンター席"
@@ -369,7 +374,7 @@ export function About() {
                 />
               </div>
 
-              <div className="absolute right-0 bottom-0 w-[58%] h-[180px] md:w-[58%] md:h-[300px] overflow-hidden rounded-tr-[22px] shadow-[0_20px_45px_rgba(18,54,70,0.14)]">
+              <div className="absolute right-0 bottom-0 w-[60%] h-[190px] md:w-[60%] md:h-[310px] overflow-hidden rounded-tr-[22px] shadow-[0_20px_45px_rgba(18,54,70,0.14)]">
                 <ImageWithFallback
                   src={interiorImage2}
                   alt="ILHA FORMOSAのテーブル席"

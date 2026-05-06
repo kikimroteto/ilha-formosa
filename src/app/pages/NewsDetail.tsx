@@ -212,13 +212,13 @@ export function NewsDetail() {
                 )}
 
                 <div className="mt-14 pt-10 border-t border-[#123646]/12 text-center">
-                <Link
+                  <Link
                     to="/news"
                     className="font-ja inline-flex items-center justify-center gap-4 rounded-full border border-[#123646] px-9 py-4 text-[13px] tracking-[0.12em] text-[#123646] hover:bg-[#123646] hover:text-white transition duration-300"
-                >
+                  >
                     お知らせ一覧へ戻る
                     <span className="font-en-medium ml-1">＞</span>
-                </Link>
+                  </Link>
                 </div>
               </motion.article>
 
@@ -230,7 +230,7 @@ export function NewsDetail() {
                   viewport={{ once: true }}
                   className="mt-16 md:mt-20 pt-12 md:pt-16 border-t border-[#123646]/35"
                 >
-                  <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
+                  <div className="grid grid-cols-2 xl:grid-cols-3 gap-4 md:gap-8">
                     {otherNews.map((item, index) => {
                       const { year, month, day } = formatDateParts(item.date);
 
@@ -254,14 +254,14 @@ export function NewsDetail() {
                                   className="w-full h-full object-cover transition duration-[1.2s] group-hover:scale-105"
                                 />
                               ) : (
-                                <div className="w-full h-full flex items-center justify-center bg-[#EFE9E3] px-6">
+                                <div className="w-full h-full flex items-center justify-center bg-[#EFE9E3] px-4 md:px-6">
                                   <div className="text-center">
-                                    <div className="text-[#123646] font-en-medium text-[22px] md:text-[28px] leading-[1.05] tracking-[0.08em]">
+                                    <div className="text-[#123646] font-en-medium text-[18px] md:text-[28px] leading-[1.05] tracking-[0.08em]">
                                       ILHA
                                       <br />
                                       FORMOSA
                                     </div>
-                                    <div className="mt-5 text-[#B08A6A] text-[11px] tracking-[0.35em]">
+                                    <div className="mt-4 md:mt-5 text-[#B08A6A] text-[10px] md:text-[11px] tracking-[0.28em] md:tracking-[0.35em]">
                                       NEWS
                                     </div>
                                   </div>
@@ -270,32 +270,32 @@ export function NewsDetail() {
 
                               <div className="absolute inset-0 bg-gradient-to-t from-[#123646]/45 via-transparent to-transparent opacity-70" />
 
-                              <div className="absolute left-5 bottom-5 text-white">
-                                <p className="font-en-medium text-[11px] tracking-[0.24em] text-white/80">
+                              <div className="absolute left-3 bottom-3 md:left-5 md:bottom-5 text-white">
+                                <p className="font-en-medium text-[10px] md:text-[11px] tracking-[0.24em] text-white/80">
                                   {year}
                                 </p>
-                                <p className="font-en-medium mt-1 text-[26px] md:text-[30px] tracking-[0.08em] leading-none">
+                                <p className="font-en-medium mt-1 text-[22px] md:text-[30px] tracking-[0.08em] leading-none">
                                   {month}.{day}
                                 </p>
                               </div>
                             </div>
 
-                            <div className="px-5 py-5 md:px-6 md:py-6 min-h-[130px] flex flex-col">
-                              <div className="mb-4">
-                                <p className="font-en-medium text-[10px] tracking-[0.18em] text-[#B08A6A]">
+                            <div className="px-3 py-4 md:px-6 md:py-6 min-h-[120px] md:min-h-[130px] flex flex-col">
+                              <div className="mb-3 md:mb-4">
+                                <p className="font-en-medium text-[9px] md:text-[10px] tracking-[0.16em] md:tracking-[0.18em] text-[#B08A6A]">
                                   NEW POST
                                 </p>
                               </div>
 
-                              <h4 className="font-ja text-[14px] md:text-[15px] leading-[1.9] tracking-[0.04em] text-[#123646] group-hover:text-[#B08A6A] transition duration-300">
+                              <h4 className="font-ja text-[12px] md:text-[15px] leading-[1.8] md:leading-[1.9] tracking-[0.04em] text-[#123646] group-hover:text-[#B08A6A] transition duration-300">
                                 {item.title}
                               </h4>
 
-                              <div className="mt-auto pt-5 flex items-center gap-3 text-[#123646]/70 group-hover:text-[#B08A6A] transition duration-300">
-                                <span className="font-en-medium text-[10px] tracking-[0.16em]">
+                              <div className="mt-auto pt-4 md:pt-5 flex items-center gap-2 md:gap-3 text-[#123646]/70 group-hover:text-[#B08A6A] transition duration-300">
+                                <span className="font-en-medium text-[9px] md:text-[10px] tracking-[0.14em] md:tracking-[0.16em]">
                                   READ MORE
                                 </span>
-                                <span className="w-7 h-[1px] bg-current transition duration-300 group-hover:w-10" />
+                                <span className="w-5 md:w-7 h-[1px] bg-current transition duration-300 group-hover:w-8 md:group-hover:w-10" />
                               </div>
                             </div>
                           </Link>

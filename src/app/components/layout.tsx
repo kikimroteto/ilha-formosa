@@ -1,6 +1,5 @@
 import { Outlet, Link, useLocation } from "react-router";
 import { useEffect, useState } from "react";
-import footerImage from "../../imports/image-4.png";
 import "../../styles/fonts.css";
 import "../../styles/index.css";
 import "../../styles/tailwind.css";
@@ -12,9 +11,33 @@ export function Layout() {
   const [isMvArea, setIsMvArea] = useState(true);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
     setOpen(false);
-  }, [location.pathname]);
+
+    const scrollToHash = () => {
+      if (!location.hash) {
+        window.scrollTo(0, 0);
+        return;
+      }
+
+      const targetId = decodeURIComponent(location.hash.replace("#", ""));
+      const element = document.getElementById(targetId);
+
+      if (!element) return;
+
+      const offset = 110;
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    };
+
+    const timer = window.setTimeout(scrollToHash, 250);
+
+    return () => window.clearTimeout(timer);
+  }, [location.pathname, location.hash]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +79,7 @@ export function Layout() {
         <nav className="absolute top-0 left-0 right-0 z-[1000] bg-transparent">
           <div className="w-full px-6 md:px-10 py-5 md:py-7">
             <div className="flex items-center justify-between">
-              {/* ロゴ：フォントそのまま */}
+              {/* ロゴ */}
               <Link
                 to="/"
                 className={`text-[19px] md:text-2xl tracking-[0.24em] md:tracking-[0.3em] text-white transition duration-500 hover:opacity-60 ${
@@ -66,7 +89,7 @@ export function Layout() {
                 ILHA FORMOSA
               </Link>
 
-              {/* Instagram：ロゴと同じ階層。スクロールで流れる */}
+              {/* Instagram */}
               <a
                 href="https://www.instagram.com/ilha_formosa_kyoto"
                 target="_blank"
@@ -109,7 +132,7 @@ export function Layout() {
                 </svg>
               </a>
 
-              {/* ハンバーガー：MVでは白、MV以外では濃紺、メニュー展開中は白 */}
+              {/* ハンバーガー */}
               <button
                 className={`fixed top-5 right-6 md:top-8 md:right-12 z-[1001] flex flex-col items-center justify-center transition-all duration-300 hover:-translate-y-1 ${
                   open || isMvArea ? "text-white" : "text-[#123646]"
@@ -164,7 +187,6 @@ export function Layout() {
           <div className="hidden md:flex min-h-screen px-20 py-16 relative">
             {/* 左側：ロゴ・Instagram */}
             <div className="w-1/2 flex flex-col items-center justify-center pr-8">
-              {/* ロゴ：フォントそのまま */}
               <Link
                 to="/"
                 onClick={() => setOpen(false)}
@@ -240,7 +262,6 @@ export function Layout() {
               </nav>
             </div>
 
-            {/* コピーライト：フォントそのまま */}
             <div className="absolute left-0 right-0 bottom-10 text-center text-[14px] leading-none tracking-[0.01em] font-semibold text-white/95">
               © 2026 ILHA FORMOSA. All Rights Reserved.
             </div>
@@ -248,9 +269,7 @@ export function Layout() {
 
           {/* ===== SPメニュー ===== */}
           <div className="md:hidden min-h-screen px-8 pt-8 pb-6 flex flex-col">
-            {/* 中央コンテンツ */}
             <div className="flex-1 flex flex-col items-center justify-center text-center">
-              {/* ロゴ：フォントそのまま */}
               <Link
                 to="/"
                 onClick={() => setOpen(false)}
@@ -264,7 +283,6 @@ export function Layout() {
                 </div>
               </Link>
 
-              {/* メニュー */}
               <nav className="flex flex-col items-center gap-8">
                 {menuItems.map((item) => (
                   <Link
@@ -283,7 +301,6 @@ export function Layout() {
                 ))}
               </nav>
 
-              {/* Instagram */}
               <a
                 href="https://www.instagram.com/ilha_formosa_kyoto"
                 target="_blank"
@@ -325,7 +342,6 @@ export function Layout() {
               </a>
             </div>
 
-            {/* コピーライト：フォントそのまま */}
             <div className="pb-1 text-center text-[11px] leading-none tracking-[0.01em] font-semibold text-white/95">
               © 2026 ILHA FORMOSA. All Rights Reserved.
             </div>
@@ -338,79 +354,388 @@ export function Layout() {
         </main>
 
         {/* ===== フッター ===== */}
-        <footer className="relative overflow-hidden bg-black text-white">
-          {/* PC：右側画像 */}
-          <div
-            className="hidden md:block absolute inset-y-0 right-0 w-[55%] opacity-70"
-            style={{
-              backgroundImage: `url(${footerImage})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center right",
-              backgroundRepeat: "no-repeat",
-            }}
-          />
+        <footer className="relative overflow-hidden bg-[#123646] text-white">
+          <div className="max-w-7xl mx-auto px-6 md:px-10 py-7 md:py-14">
+            {/* PC */}
+            <div className="hidden md:block">
+              <div className="grid grid-cols-[0.8fr_1.2fr] gap-12 items-start">
+                {/* 左：ロゴ・店舗情報 */}
+                <div>
+                  <div>
+                    <Link
+                      to="/"
+                      className="inline-block transition duration-300 hover:opacity-70"
+                    >
+                      <div className="text-[34px] md:text-[38px] leading-[0.92] tracking-[0.06em] font-semibold">
+                        ILHA
+                      </div>
+                      <div className="text-[34px] md:text-[38px] leading-[0.92] tracking-[0.06em] font-semibold">
+                        FORMOSA
+                      </div>
+                      <p className="font-ja mt-4 text-[11px] tracking-[0.22em] text-white/82">
+                        お茶とお酒と台湾料理
+                      </p>
+                    </Link>
 
-          {/* SP：全面背景画像 */}
-          <div
-            className="md:hidden absolute inset-0 opacity-55"
-            style={{
-              backgroundImage: `url(${footerImage})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-            }}
-          />
+                    <a
+                      href="https://www.instagram.com/ilha_formosa_kyoto"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Instagram"
+                      className="mt-5 inline-flex items-center gap-2 text-white/72 transition duration-300 hover:text-white"
+                    >
+                      <svg
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <rect
+                          x="3"
+                          y="3"
+                          width="18"
+                          height="18"
+                          rx="5"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        />
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="4"
+                          stroke="currentColor"
+                          strokeWidth="2"
+                        />
+                        <circle
+                          cx="17.5"
+                          cy="6.5"
+                          r="1.2"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    </a>
+                  </div>
 
-          {/* PC用グラデーション */}
-          <div className="hidden md:block absolute inset-0 bg-gradient-to-r from-black from-[38%] via-black/85 via-[52%] to-transparent to-[76%]" />
-          <div className="hidden md:block absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+                  <div className="mt-9 border-t border-white/12 pt-8 font-ja text-[11px] leading-[1.95] tracking-[0.05em] text-white/72">
+                    <p className="mb-2 text-[11px] tracking-[0.14em] text-white/88">
+                      ご予約・お問い合わせ
+                    </p>
 
-          {/* SP用 黒なじませ */}
-          <div className="md:hidden absolute inset-0 bg-black/20" />
-          <div className="md:hidden absolute inset-0 bg-gradient-to-b from-black/45 via-black/10 to-black/65" />
+                    <a
+                      href="tel:05055975300"
+                      className="inline-block text-[20px] tracking-[0.12em] font-en-medium text-white transition duration-300 hover:opacity-70"
+                    >
+                      050-5597-5300
+                    </a>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 py-8 md:py-10">
-            {/* フッター上部ナビ */}
-            <nav className="mb-8 md:mb-10">
-              <div className="flex flex-nowrap items-center justify-center md:justify-start gap-x-5 md:gap-x-6 text-[10px] md:text-xs tracking-[0.14em] md:tracking-[0.18em] text-white/60 whitespace-nowrap">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className="transition duration-300 hover:text-white hover:opacity-80"
+                    <div className="mt-5 space-y-1">
+                      <p>〒600-8401 京都府京都市下京区燈籠町592</p>
+                      <p>ランチ 12:00 - 14:30 / ディナー 17:00 - 22:00</p>
+                      <p>定休日: 水曜日</p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 右：ナビ */}
+                <div>
+                  <div className="grid grid-cols-4 gap-8 pt-3">
+                    {/* MENU */}
+                    <div>
+                      <Link
+                        to="/menu"
+                        className="font-en-medium text-[16px] tracking-[0.18em] text-white transition duration-300 hover:opacity-70"
+                      >
+                        MENU
+                      </Link>
+
+                      <div className="mt-5 flex flex-col gap-3">
+                        <Link
+                          to="/menu#course"
+                          className="font-en-medium text-[11px] tracking-[0.12em] text-white/68 transition duration-300 hover:text-white"
+                        >
+                          COURSE
+                        </Link>
+                        <Link
+                          to="/menu#lunch"
+                          className="font-en-medium text-[11px] tracking-[0.12em] text-white/68 transition duration-300 hover:text-white"
+                        >
+                          LUNCH
+                        </Link>
+                        <Link
+                          to="/menu#tea-sweets"
+                          className="font-en-medium text-[11px] tracking-[0.12em] text-white/68 transition duration-300 hover:text-white"
+                        >
+                          TEA / SWEETS
+                        </Link>
+                        <Link
+                          to="/menu#drink"
+                          className="font-en-medium text-[11px] tracking-[0.12em] text-white/68 transition duration-300 hover:text-white"
+                        >
+                          DRINK
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* ABOUT */}
+                    <div>
+                      <Link
+                        to="/about"
+                        className="font-en-medium text-[16px] tracking-[0.18em] text-white transition duration-300 hover:opacity-70"
+                      >
+                        ABOUT
+                      </Link>
+
+                      <div className="mt-5 flex flex-col gap-3">
+                        <Link
+                          to="/about#concept"
+                          className="font-en-medium text-[11px] tracking-[0.12em] text-white/68 transition duration-300 hover:text-white"
+                        >
+                          CONCEPT
+                        </Link>
+                        <Link
+                          to="/about#our-value"
+                          className="font-en-medium text-[11px] tracking-[0.12em] text-white/68 transition duration-300 hover:text-white"
+                        >
+                          OUR VALUE
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* ACCESS */}
+                    <div>
+                      <Link
+                        to="/access"
+                        className="font-en-medium text-[16px] tracking-[0.18em] text-white transition duration-300 hover:opacity-70"
+                      >
+                        ACCESS
+                      </Link>
+
+                      <div className="mt-5 flex flex-col gap-3">
+                        <Link
+                          to="/access#information"
+                          className="font-en-medium text-[11px] tracking-[0.12em] text-white/68 transition duration-300 hover:text-white"
+                        >
+                          INFORMATION
+                        </Link>
+                        <Link
+                          to="/access#map"
+                          className="font-en-medium text-[11px] tracking-[0.12em] text-white/68 transition duration-300 hover:text-white"
+                        >
+                          MAP
+                        </Link>
+                      </div>
+                    </div>
+
+                    {/* NEWS */}
+                    <div>
+                      <Link
+                        to="/news"
+                        className="font-en-medium text-[16px] tracking-[0.18em] text-white transition duration-300 hover:opacity-70"
+                      >
+                        NEWS
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-9 border-t border-white/12 pt-5 flex items-center justify-between">
+                <p className="text-[10px] tracking-[0.02em] text-white/50">
+                  Copyright © ILHA FORMOSA All Rights Reserved.
+                </p>
+
+                <p className="font-en-medium text-[10px] tracking-[0.12em] text-white/35">
+                  Kyoto Taiwanese Restaurant
+                </p>
+              </div>
+            </div>
+
+            {/* SP */}
+            <div className="md:hidden">
+              {/* ロゴ＋Instagram */}
+              <div className="relative flex justify-center">
+                <Link
+                  to="/"
+                  className="inline-block text-center transition duration-300 hover:opacity-70"
+                >
+                  <div className="text-[23px] leading-[0.92] tracking-[0.06em] font-semibold">
+                    ILHA
+                  </div>
+                  <div className="text-[23px] leading-[0.92] tracking-[0.06em] font-semibold">
+                    FORMOSA
+                  </div>
+                  <p className="font-ja mt-2 text-[9px] tracking-[0.16em] text-white/82">
+                    お茶とお酒と台湾料理
+                  </p>
+                </Link>
+
+                <a
+                  href="https://www.instagram.com/ilha_formosa_kyoto"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="absolute left-1/2 top-1 translate-x-[92px] inline-flex items-center justify-center text-white transition duration-300 hover:opacity-70"
+                >
+                  <svg
+                    width="22"
+                    height="22"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
                   >
-                    {item.ja}
-                  </Link>
-                ))}
+                    <rect
+                      x="3"
+                      y="3"
+                      width="18"
+                      height="18"
+                      rx="5"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                    <circle
+                      cx="12"
+                      cy="12"
+                      r="4"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    />
+                    <circle
+                      cx="17.5"
+                      cy="6.5"
+                      r="1.2"
+                      fill="currentColor"
+                    />
+                  </svg>
+                </a>
               </div>
-            </nav>
 
-            {/* フッター本文 */}
-            <div className="w-full md:w-[48%] text-center md:text-left">
-              <h3 className="text-[28px] md:text-[36px] tracking-[0.35em] md:tracking-[0.45em] font-light mb-3">
-                ILHA FORMOSA
-              </h3>
+              {/* 店舗情報 */}
+              <div className="mt-5 border-t border-white/12 pt-5 text-center font-ja text-[9px] leading-[1.75] tracking-[0.04em] text-white/72">
+                <p className="mb-1.5 text-[9px] tracking-[0.12em] text-white/88">
+                  ご予約・お問い合わせ
+                </p>
 
-              <p className="text-[10px] md:text-xs text-white/60 tracking-[0.35em] mb-1">
-                ご予約・お問い合わせ
-              </p>
-
-              <div className="flex justify-center md:justify-start items-center gap-2 mb-5">
-                <span className="text-base md:text-lg tracking-[0.25em] font-light">
+                <a
+                  href="tel:05055975300"
+                  className="inline-block text-[16px] tracking-[0.1em] font-en-medium text-white transition duration-300 hover:opacity-70"
+                >
                   050-5597-5300
-                </span>
+                </a>
+
+                <div className="mt-3 space-y-0.5">
+                  <p>〒600-8401 京都府京都市下京区燈籠町592</p>
+                  <p>ランチ 12:00 - 14:30 / ディナー 17:00 - 22:00</p>
+                  <p>定休日: 水曜日</p>
+                </div>
               </div>
 
-              <div className="w-10 h-px bg-white/30 mx-auto md:mx-0 mb-5" />
+              {/* ナビ：4列を等間隔 */}
+              <div className="mt-5 border-t border-white/12 pt-5">
+                <div className="grid grid-cols-4 gap-0 text-center">
+                  {/* MENU */}
+                  <div className="min-w-0 px-1">
+                    <Link
+                      to="/menu"
+                      className="font-en-medium text-[10px] tracking-[0.12em] text-white transition duration-300 hover:opacity-70"
+                    >
+                      MENU
+                    </Link>
 
-              <div className="text-[11px] md:text-xs text-white/60 space-y-1 leading-relaxed">
-                <p>〒600-8401 京都府京都市下京区燈籠町592</p>
-                <p>ランチ 12:00 - 14:30 / ディナー 17:00 - 22:00</p>
-                <p>定休日: 水曜日</p>
+                    <div className="mt-2.5 flex flex-col items-center gap-1.5">
+                      <Link
+                        to="/menu#course"
+                        className="font-en-medium text-[8px] tracking-[0.04em] text-white/62 transition duration-300 hover:text-white"
+                      >
+                        COURSE
+                      </Link>
+                      <Link
+                        to="/menu#lunch"
+                        className="font-en-medium text-[8px] tracking-[0.04em] text-white/62 transition duration-300 hover:text-white"
+                      >
+                        LUNCH
+                      </Link>
+                      <Link
+                        to="/menu#tea-sweets"
+                        className="font-en-medium text-[8px] tracking-[0.04em] text-white/62 transition duration-300 hover:text-white"
+                      >
+                        TEA
+                      </Link>
+                      <Link
+                        to="/menu#drink"
+                        className="font-en-medium text-[8px] tracking-[0.04em] text-white/62 transition duration-300 hover:text-white"
+                      >
+                        DRINK
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* ABOUT */}
+                  <div className="min-w-0 px-1">
+                    <Link
+                      to="/about"
+                      className="font-en-medium text-[10px] tracking-[0.12em] text-white transition duration-300 hover:opacity-70"
+                    >
+                      ABOUT
+                    </Link>
+
+                    <div className="mt-2.5 flex flex-col items-center gap-1.5">
+                      <Link
+                        to="/about#concept"
+                        className="font-en-medium text-[8px] tracking-[0.04em] text-white/62 transition duration-300 hover:text-white"
+                      >
+                        CONCEPT
+                      </Link>
+                      <Link
+                        to="/about#our-value"
+                        className="font-en-medium text-[8px] tracking-[0.04em] text-white/62 transition duration-300 hover:text-white"
+                      >
+                        VALUE
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* ACCESS */}
+                  <div className="min-w-0 px-1">
+                    <Link
+                      to="/access"
+                      className="font-en-medium text-[10px] tracking-[0.12em] text-white transition duration-300 hover:opacity-70"
+                    >
+                      ACCESS
+                    </Link>
+
+                    <div className="mt-2.5 flex flex-col items-center gap-1.5">
+                      <Link
+                        to="/access#information"
+                        className="font-en-medium text-[8px] tracking-[0.04em] text-white/62 transition duration-300 hover:text-white"
+                      >
+                        INFO
+                      </Link>
+                      <Link
+                        to="/access#map"
+                        className="font-en-medium text-[8px] tracking-[0.04em] text-white/62 transition duration-300 hover:text-white"
+                      >
+                        MAP
+                      </Link>
+                    </div>
+                  </div>
+
+                  {/* NEWS */}
+                  <div className="min-w-0 px-1">
+                    <Link
+                      to="/news"
+                      className="font-en-medium text-[10px] tracking-[0.12em] text-white transition duration-300 hover:opacity-70"
+                    >
+                      NEWS
+                    </Link>
+                  </div>
+                </div>
               </div>
 
-              <div className="mt-8 text-[10px] text-white/40 tracking-wider">
-                © 2026 ILHA FORMOSA. All Rights Reserved.
+              <div className="mt-4 border-t border-white/12 pt-3 text-center">
+                <p className="text-[8px] tracking-[0.02em] text-white/45">
+                  Copyright © ILHA FORMOSA All Rights Reserved.
+                </p>
               </div>
             </div>
           </div>
