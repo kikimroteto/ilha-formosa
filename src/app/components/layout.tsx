@@ -616,7 +616,7 @@ export function Layout() {
                   href="tel:08040140164"
                   className="inline-block text-[16px] tracking-[0.1em] font-en-medium text-white transition duration-300 hover:opacity-70"
                 >
-                  080-40140164
+                  080-4014-0164
                 </a>
 
                 <div className="mt-3 space-y-0.5">

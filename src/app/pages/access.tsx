@@ -228,28 +228,14 @@ export function Access() {
                 </h3>
 
                 <div className="divide-y divide-[#123646]/12">
-                  <RouteRow station="四条烏丸駅" time="徒歩7分" />
-                  <RouteRow station="地下鉄四条駅" time="徒歩7分" />
-                  <RouteRow station="地下鉄五条駅" time="徒歩7分" />
+                  <RouteRow station="烏丸駅" time="徒歩6分" />
+                  <RouteRow station="地下鉄四条駅/五条駅" time="徒歩6分" />
+                  <RouteRow station="京都河原町駅" time="徒歩12分" />
                 </div>
 
                 <p className="font-ja mt-7 text-[13px] md:text-[14px] leading-[2] tracking-[0.08em] text-[#123646]/70">
                   道に迷われた際は、お気軽にお電話にてお問い合わせください。
                 </p>
-              </div>
-
-              <div className="bg-white/60 border border-[#123646]/10 px-6 md:px-8 py-8 md:py-9 shadow-[0_16px_44px_rgba(0,0,0,0.03)]">
-                <div className="flex items-center gap-3 text-[#B08A6A] mb-7">
-                  <Car className="w-5 h-5" />
-                  <p className="font-en-medium text-[12px] tracking-[0.35em]">
-                    PARKING
-                  </p>
-                </div>
-
-                <h3 className="text-[24px] md:text-[30px] tracking-[0.14em] text-[#123646] font-mincho mb-5">
-                  お車でお越しの方
-                </h3>
-
                 <p className="font-ja text-[13px] md:text-[14px] leading-[2] tracking-[0.08em] text-[#123646]/70">
                   専用駐車場はございません。お車でお越しの方は、近隣の有料駐車場をご利用ください。
                 </p>
