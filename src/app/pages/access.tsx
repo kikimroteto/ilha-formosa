@@ -97,8 +97,8 @@ export function Access() {
                 <InfoRow
                   icon={<Phone className="w-5 h-5" />}
                   label="電話"
-                  value="050-5597-5300"
-                  link="tel:05055975300"
+                  value="080-4014-0164"
+                  link="tel:08040140164"
                 />
 
                 <div className="py-6 md:py-7 grid md:grid-cols-[120px_1fr] gap-4 md:gap-8">

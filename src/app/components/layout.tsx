@@ -361,7 +361,7 @@ export function Layout() {
               <div className="grid grid-cols-[0.8fr_1.2fr] gap-12 items-start">
                 {/* 左：ロゴ・店舗情報 */}
                 <div>
-                  <div>
+                  <div className="relative">
                     <Link
                       to="/"
                       className="inline-block transition duration-300 hover:opacity-70"
@@ -382,11 +382,11 @@ export function Layout() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Instagram"
-                      className="mt-5 inline-flex items-center gap-2 text-white/72 transition duration-300 hover:text-white"
+                      className="absolute top-4 right-40 text-white transition duration-300 hover:opacity-70"
                     >
                       <svg
-                        width="22"
-                        height="22"
+                        width="28"
+                        height="28"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -426,7 +426,7 @@ export function Layout() {
                       href="tel:05055975300"
                       className="inline-block text-[20px] tracking-[0.12em] font-en-medium text-white transition duration-300 hover:opacity-70"
                     >
-                      050-5597-5300
+                      080-4014-0164
                     </a>
 
                     <div className="mt-5 space-y-1">
@@ -540,13 +540,9 @@ export function Layout() {
                 </div>
               </div>
 
-              <div className="mt-9 border-t border-white/12 pt-5 flex items-center justify-between">
-                <p className="text-[10px] tracking-[0.02em] text-white/50">
+              <div className="mt-9 border-t border-white/12 pt-5 flex justify-center">
+                <p className="text-[10px] tracking-[0.02em] text-white/50 text-center">
                   Copyright © ILHA FORMOSA All Rights Reserved.
-                </p>
-
-                <p className="font-en-medium text-[10px] tracking-[0.12em] text-white/35">
-                  Kyoto Taiwanese Restaurant
                 </p>
               </div>
             </div>
@@ -617,10 +613,10 @@ export function Layout() {
                 </p>
 
                 <a
-                  href="tel:05055975300"
+                  href="tel:08040140164"
                   className="inline-block text-[16px] tracking-[0.1em] font-en-medium text-white transition duration-300 hover:opacity-70"
                 >
-                  050-5597-5300
+                  080-40140164
                 </a>
 
                 <div className="mt-3 space-y-0.5">
