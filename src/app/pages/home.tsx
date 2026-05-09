@@ -131,6 +131,120 @@ export function Home() {
         </div>
       </section>
 
+      {/* ================= NEWS ================= */}
+      <section className="relative px-6 md:px-10 py-20 md:py-28 overflow-hidden">
+        <div className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 hidden md:block w-[300px] h-[300px] rounded-[70px] rotate-45 bg-[#B08A6A]/6" />
+
+        <div className="relative max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.75 }}
+            viewport={{ once: true }}
+            className="text-center mb-12 md:mb-16"
+          >
+              <p className="font-en-medium text-[12px] md:text-[13px] tracking-[0.34em] text-[#B08A6A] mb-5">
+                最新消息
+              </p>
+
+              <h2 className="font-en-medium text-[30px] md:text-[46px] text-[#123646] tracking-[0.16em] font-light">
+                NEWS
+              </h2>
+
+              <p className="font-ja mt-4 text-[11px] md:text-[12px] text-[#B08A6A] tracking-[0.28em]">
+                お知らせ
+              </p>
+          </motion.div>
+
+          {newsList.length > 0 && (
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-6 max-w-6xl mx-auto">
+              {newsList.map((item, index) => {
+                const { month, day } = formatDateParts(item.date);
+                const year = new Date(item.date).getFullYear();
+
+                return (
+                  <motion.article
+                    key={item.id}
+                    initial={{ opacity: 0, y: 18 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.65, delay: index * 0.08 }}
+                    viewport={{ once: true }}
+                  >
+                    <Link
+                      to={`/news/${item.slug || item.id}`}
+                      className="group block h-full bg-white/70 border border-[#123646]/10 overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(18,54,70,0.08)]"
+                    >
+                      <div className="relative aspect-[4/3] overflow-hidden bg-[#EFE9E3]">
+                        {item.image?.url ? (
+                          <ImageWithFallback
+                            src={item.image.url}
+                            alt={item.title}
+                            className="w-full h-full object-cover transition duration-[1.2s] group-hover:scale-105"
+                          />
+                        ) : (
+                          <div className="w-full h-full flex items-center justify-center bg-[#EFE9E3] px-4">
+                            <div className="text-center">
+                              <div className="text-[#123646] font-en-medium text-[18px] md:text-[26px] leading-[1.05] tracking-[0.08em]">
+                                ILHA
+                                <br />
+                                FORMOSA
+                              </div>
+                              <div className="mt-4 text-[#B08A6A] text-[10px] tracking-[0.28em]">
+                                NEWS
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#123646]/55 via-transparent to-transparent opacity-75" />
+
+                        <div className="absolute left-4 bottom-4 text-white">
+                          <p className="font-en-medium text-[10px] md:text-[11px] tracking-[0.18em] leading-none">
+                            {year}
+                          </p>
+                          <p className="font-en-medium mt-1 text-[24px] md:text-[30px] tracking-[0.06em] leading-none">
+                            {month}.{day}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="px-4 py-5 md:px-5 md:py-6 min-h-[130px] md:min-h-[150px] flex flex-col">
+                        <div className="mb-4">
+                          <p className="font-en-medium text-[10px] md:text-[11px] tracking-[0.18em] text-[#B08A6A]">
+                            NEW POST
+                          </p>
+                        </div>
+
+                        <h3 className="font-ja text-[12px] md:text-[14px] leading-[1.8] md:leading-[1.9] tracking-[0.04em] text-[#123646] group-hover:text-[#B08A6A] transition duration-300">
+                          {item.title}
+                        </h3>
+
+                        <div className="mt-auto pt-5 flex items-center gap-3 text-[#123646]/70 group-hover:text-[#B08A6A] transition duration-300">
+                          <span className="font-en-medium text-[10px] md:text-[11px] tracking-[0.16em]">
+                            READ MORE
+                          </span>
+                          <span className="w-7 h-[1px] bg-current transition duration-300 group-hover:w-10" />
+                        </div>
+                      </div>
+                    </Link>
+                  </motion.article>
+                );
+              })}
+            </div>
+          )}
+
+          <div className="mt-12 md:mt-16 text-center">
+            <Link
+              to="/news"
+              className="font-ja mt-8 inline-flex items-center justify-center gap-4 rounded-full border border-[#123646] px-9 py-4 text-[13px] tracking-[0.12em] text-[#123646] hover:bg-[#123646] hover:text-white transition duration-300"
+            >
+              お知らせを見る
+              <span className="font-en-medium ml-1">＞</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+      
       {/* ================= CONCEPT ================= */}
       <section className="px-6 md:px-10 pt-20 md:pt-28 pb-20 md:pb-28">
         <div className="max-w-6xl mx-auto">
@@ -325,119 +439,6 @@ export function Home() {
         </div>
       </section>
 
-      {/* ================= TOPICS ================= */}
-      <section className="relative px-6 md:px-10 py-20 md:py-28 overflow-hidden">
-        <div className="pointer-events-none absolute top-10 left-1/2 -translate-x-1/2 hidden md:block w-[300px] h-[300px] rounded-[70px] rotate-45 bg-[#B08A6A]/6" />
-
-        <div className="relative max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 22 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.75 }}
-            viewport={{ once: true }}
-            className="text-center mb-12 md:mb-16"
-          >
-              <p className="font-en-medium text-[12px] md:text-[13px] tracking-[0.34em] text-[#B08A6A] mb-5">
-                最新消息
-              </p>
-
-              <h2 className="font-en-medium text-[30px] md:text-[46px] text-[#123646] tracking-[0.16em] font-light">
-                NEWS
-              </h2>
-
-              <p className="font-ja mt-4 text-[11px] md:text-[12px] text-[#B08A6A] tracking-[0.28em]">
-                お知らせ
-              </p>
-          </motion.div>
-
-          {newsList.length > 0 && (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-4 gap-y-8 md:gap-x-6 max-w-6xl mx-auto">
-              {newsList.map((item, index) => {
-                const { month, day } = formatDateParts(item.date);
-                const year = new Date(item.date).getFullYear();
-
-                return (
-                  <motion.article
-                    key={item.id}
-                    initial={{ opacity: 0, y: 18 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.65, delay: index * 0.08 }}
-                    viewport={{ once: true }}
-                  >
-                    <Link
-                      to={`/news/${item.slug || item.id}`}
-                      className="group block h-full bg-white/70 border border-[#123646]/10 overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(18,54,70,0.08)]"
-                    >
-                      <div className="relative aspect-[4/3] overflow-hidden bg-[#EFE9E3]">
-                        {item.image?.url ? (
-                          <ImageWithFallback
-                            src={item.image.url}
-                            alt={item.title}
-                            className="w-full h-full object-cover transition duration-[1.2s] group-hover:scale-105"
-                          />
-                        ) : (
-                          <div className="w-full h-full flex items-center justify-center bg-[#EFE9E3] px-4">
-                            <div className="text-center">
-                              <div className="text-[#123646] font-en-medium text-[18px] md:text-[26px] leading-[1.05] tracking-[0.08em]">
-                                ILHA
-                                <br />
-                                FORMOSA
-                              </div>
-                              <div className="mt-4 text-[#B08A6A] text-[10px] tracking-[0.28em]">
-                                NEWS
-                              </div>
-                            </div>
-                          </div>
-                        )}
-
-                        <div className="absolute inset-0 bg-gradient-to-t from-[#123646]/55 via-transparent to-transparent opacity-75" />
-
-                        <div className="absolute left-4 bottom-4 text-white">
-                          <p className="font-en-medium text-[10px] md:text-[11px] tracking-[0.18em] leading-none">
-                            {year}
-                          </p>
-                          <p className="font-en-medium mt-1 text-[24px] md:text-[30px] tracking-[0.06em] leading-none">
-                            {month}.{day}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="px-4 py-5 md:px-5 md:py-6 min-h-[130px] md:min-h-[150px] flex flex-col">
-                        <div className="mb-4">
-                          <p className="font-en-medium text-[10px] md:text-[11px] tracking-[0.18em] text-[#B08A6A]">
-                            NEW POST
-                          </p>
-                        </div>
-
-                        <h3 className="font-ja text-[12px] md:text-[14px] leading-[1.8] md:leading-[1.9] tracking-[0.04em] text-[#123646] group-hover:text-[#B08A6A] transition duration-300">
-                          {item.title}
-                        </h3>
-
-                        <div className="mt-auto pt-5 flex items-center gap-3 text-[#123646]/70 group-hover:text-[#B08A6A] transition duration-300">
-                          <span className="font-en-medium text-[10px] md:text-[11px] tracking-[0.16em]">
-                            READ MORE
-                          </span>
-                          <span className="w-7 h-[1px] bg-current transition duration-300 group-hover:w-10" />
-                        </div>
-                      </div>
-                    </Link>
-                  </motion.article>
-                );
-              })}
-            </div>
-          )}
-
-          <div className="mt-12 md:mt-16 text-center">
-            <Link
-              to="/news"
-              className="font-ja mt-8 inline-flex items-center justify-center gap-4 rounded-full border border-[#123646] px-9 py-4 text-[13px] tracking-[0.12em] text-[#123646] hover:bg-[#123646] hover:text-white transition duration-300"
-            >
-              お知らせを見る
-              <span className="font-en-medium ml-1">＞</span>
-            </Link>
-          </div>
-        </div>
-      </section>
 
       {/* ================= GALLERY ================= */}
       <section className="py-20 md:py-32 overflow-hidden">
