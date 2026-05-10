@@ -12,6 +12,7 @@ import galleryImage4 from "../../imports/image-7.png";
 import galleryImage5 from "../../imports/image-8.png";
 import galleryImage6 from "../../imports/image-2.png";
 import galleryImage7 from "../../imports/image-3.png";
+import ruro from "../../imports/ruro.jpg";
 
 type MicroCMSImage = {
   url: string;
@@ -293,7 +294,7 @@ export function Home() {
             >
               <div className="overflow-hidden">
                 <img
-                  src={galleryImage1}
+                  src={ruro}
                   alt="ILHA FORMOSAの料理"
                   className="w-full h-[360px] md:h-[560px] object-cover"
                 />
