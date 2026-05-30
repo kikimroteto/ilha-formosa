@@ -355,66 +355,60 @@ export function About() {
       </section>
 
       {/* ===== Interior Section ===== */}
-      <section className="relative px-6 md:px-12 lg:px-20 py-20 md:py-28 overflow-hidden">
-        <div className="relative max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-10 lg:gap-16 items-center">
-            {/* 写真エリア */}
-            <motion.div
-              initial={{ opacity: 0, x: -36 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-              className="relative min-h-[360px] md:min-h-[560px] order-2 lg:order-1"
-            >
-              <div className="absolute left-0 top-0 w-[88%] h-[290px] md:w-[78%] md:h-[450px] overflow-hidden rounded-tl-[36px] md:rounded-tl-[48px] rounded-br-[8px] shadow-[0_18px_45px_rgba(18,54,70,0.10)]">
-                <ImageWithFallback
-                  src={interiorImage1}
-                  alt="ILHA FORMOSAのカウンター席"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+      <section className="relative py-20 md:py-32 pb-20 md:pb-55">
+        <div className="grid lg:grid-cols-[minmax(0,0.58fr)_minmax(420px,0.42fr)] gap-10 lg:gap-20 items-center">
+          
+          {/* 写真エリア */}
+          <motion.div
+            initial={{ opacity: 0, x: -36 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+            className="order-2 lg:order-1 grid grid-cols-[1.05fr_1fr] gap-1.5 md:gap-4 w-full max-w-none lg:max-w-[820px] justify-self-start px-0 pr-6 md:px-6 md:pr-0 lg:px-0 pb-8 md:pb-0"
+          >
+            <div className="row-span-2 overflow-hidden">
+              <ImageWithFallback
+                src={interiorImage1}
+                alt="ILHA FORMOSAのカウンター席"
+                className="w-full h-full min-h-[250px] md:min-h-[420px] lg:min-h-[520px] object-cover"
+              />
+            </div>
 
-              <div className="absolute right-0 bottom-0 w-[60%] h-[190px] md:w-[60%] md:h-[310px] overflow-hidden rounded-tr-[22px] shadow-[0_20px_45px_rgba(18,54,70,0.14)]">
-                <ImageWithFallback
-                  src={interiorImage2}
-                  alt="ILHA FORMOSAのテーブル席"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </motion.div>
+            <div className="row-span-2 overflow-hidden rounded-tr-[10px] md:rounded-tr-[16px] rounded-br-[10px] md:rounded-br-[16px]">
+              <ImageWithFallback
+                src={interiorImage2}
+                alt="ILHA FORMOSAのテーブル席"
+                className="w-full h-full min-h-[250px] md:min-h-[420px] lg:min-h-[520px] object-cover"
+              />
+            </div>
+          </motion.div>
 
-            {/* テキストエリア */}
-            <motion.div
-              initial={{ opacity: 0, x: 36 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1 }}
-              viewport={{ once: true }}
-              className="order-1 lg:order-2"
-            >
-              <p className="font-en-medium text-[12px] md:text-[13px] tracking-[0.32em] text-[#B08A6A] mb-8">
-                INTERIOR
-              </p>
+          {/* テキストエリア */}
+          <motion.div
+            initial={{ opacity: 0, x: 36 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+            className="order-1 lg:order-2 px-6 md:px-12 lg:px-0 lg:pr-20"
+          >
+            <p className="font-en-medium text-[12px] md:text-[13px] tracking-[0.32em] text-[#B08A6A] mb-8">
+              INTERIOR
+            </p>
 
-              <h2 className="text-[30px] md:text-[42px] leading-[1.7] tracking-[0.1em] text-[#123646] font-mincho mb-10">
-                落ち着いた、<br />
-                隠れ家的な空間
-              </h2>
+            <h2 className="text-[30px] md:text-[42px] leading-[1.7] tracking-[0.1em] text-[#123646] font-mincho mb-10">
+              落ち着いた、<br />
+              隠れ家的な空間
+            </h2>
 
-              <div className="w-16 h-[1px] bg-[#B08A6A] mb-10" />
+            <div className="w-16 h-[1px] bg-[#B08A6A] mb-10" />
 
-              <div className="font-ja text-[14px] md:text-[15px] leading-[2.2] tracking-[0.08em] text-[#123646] space-y-4 max-w-xl">
-                <p>
-                  アンティークとモダンが調和した、落ち着きのある隠れ家的な店内。
-                </p>
-                <p>
-                  ゆとりを持たせた席配置で、車椅子やベビーカーをご利用の方、小さなお子様連れのお客様にも安心してお過ごしいただけます。
-                </p>
-                <p>
-                  軽いお食事からコース料理まで幅広くご用意しておりますので、普段のお食事はもちろん、女子会やご宴会など、さまざまなシーンでご利用ください。
-                </p>
-              </div>
-            </motion.div>
-          </div>
+            <div className="font-ja text-[14px] md:text-[15px] leading-[2.2] tracking-[0.08em] text-[#123646] space-y-4 max-w-xl">
+              <p>アンティークとモダンが調和した、落ち着きのある隠れ家的な店内。</p>
+              <p>ゆとりを持たせた席配置で、車椅子やベビーカーをご利用の方、小さなお子様連れのお客様にも安心してお過ごしいただけます。</p>
+              <p>軽いお食事からコース料理まで幅広くご用意しておりますので、普段のお食事はもちろん、女子会やご宴会など、さまざまなシーンでご利用ください。</p>
+            </div>
+          </motion.div>
+
         </div>
       </section>
     </div>
