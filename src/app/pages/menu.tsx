@@ -224,15 +224,6 @@ export function Menu() {
         { name: "青草茶", price: "¥600" },
       ],
     },
-    {
-      category: "台湾茶",
-      note: "台湾阿里山からこだわりのお茶を取り寄せました 数々の受賞歴を誇ります",
-      items: [
-        { name: "阿里山烏龍茶", price: "¥1,200" },
-        { name: "阿里山紅茶", price: "¥1,400" },
-        { name: "数々の受賞歴を誇る阿里山の逸品です 3煎お楽しみください" },
-      ],
-    },
   ];
 
   const menuSections = [
