@@ -118,17 +118,21 @@ export function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.75 }}
             viewport={{ once: true }}
-            className="text-center mb-12 md:mb-16"
+            className="text-center mb-14 md:mb-20"
           >
-            <p className="font-en-medium text-[12px] md:text-[13px] tracking-[0.34em] text-[#B08A6A] mb-5">
+            <p className="font-ja text-[12px] md:text-[14px] tracking-[0.28em] text-[#B08A6A] mb-5">
               最新消息
             </p>
-            <h2 className="font-en-medium text-[30px] md:text-[46px] text-[#123646] tracking-[0.16em] font-light">
+
+            <h2 className="text-[34px] md:text-[52px] font-en-medium tracking-[0.08em] text-[#123646] leading-none">
               NEWS
             </h2>
-            <p className="font-ja mt-4 text-[11px] md:text-[12px] text-[#B08A6A] tracking-[0.28em]">
+
+            <p className="font-ja mt-4 text-[13px] md:text-[15px] tracking-[0.18em] text-[#B08A6A]">
               お知らせ
             </p>
+
+            <div className="w-16 h-[1px] bg-[#123646]/25 mx-auto mt-8" />
           </motion.div>
 
           {newsList.length > 0 && (

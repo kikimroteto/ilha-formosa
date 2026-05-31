@@ -146,7 +146,46 @@ export function News() {
           </motion.div>
 
           {/* カード一覧 */}
-          <div className="bg-white/55 border border-[#123646]/8 px-5 py-8 md:px-10 md:py-12">
+          <div className="md:hidden grid grid-cols-2 gap-x-4 gap-y-9">
+          {newsList.map((item, index) => {
+            const { year, month, day } = formatDateParts(item.date);
+            const showNewPost = isNewPost(item.date);
+            return (
+              <motion.article key={item.id} initial={{ opacity: 0, y: 18 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.65, delay: index * 0.05 }} viewport={{ once: true }}>
+                <Link to={`/news/${item.slug || item.id}`} className="group block h-full bg-white/70 border border-[#123646]/10 overflow-hidden transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(18,54,70,0.08)]">
+                  <div className="relative aspect-[4/3] overflow-hidden bg-[#EFE9E3]">
+                    {item.image?.url ? (
+                      <ImageWithFallback src={item.image.url} alt={item.title} className="w-full h-full object-cover transition duration-[1.2s] group-hover:scale-105" />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-[#EFE9E3] px-6">
+                        <div className="text-center">
+                          <div className="text-[#123646] font-en-medium text-[20px] leading-[1.05] tracking-[0.08em]">ILHA<br />FORMOSA</div>
+                          <div className="mt-5 text-[#B08A6A] text-[10px] tracking-[0.35em]">NEWS</div>
+                        </div>
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#123646]/45 via-transparent to-transparent opacity-70" />
+                      <div className="absolute left-4 bottom-4 text-white">
+                        <p className="font-en-medium text-[10px] md:text-[11px] tracking-[0.18em] leading-none">{year}</p>
+                        <p className="font-en-medium mt-1 text-[24px] md:text-[30px] tracking-[0.06em] leading-none">{month}.{day}</p>
+                      </div>
+                  </div>
+                  <div className="px-4 py-5 min-h-[130px] flex flex-col">
+                    <div className="mb-4 min-h-[14px]">
+                      {showNewPost && <p className="font-en-medium text-[9px] tracking-[0.18em] text-[#B08A6A]">NEW POST</p>}
+                    </div>
+                    <h3 className="font-ja text-[12px] leading-[1.8] tracking-[0.04em] text-[#123646] group-hover:text-[#B08A6A] transition duration-300">{item.title}</h3>
+                    <div className="mt-auto pt-5 flex items-center gap-3 text-[#123646]/70 group-hover:text-[#B08A6A] transition duration-300">
+                      <span className="font-en-medium text-[10px] tracking-[0.16em]">READ MORE</span>
+                      <span className="w-7 h-[1px] bg-current transition duration-300 group-hover:w-10" />
+                    </div>
+                  </div>
+                </Link>
+              </motion.article>
+            );
+          })}
+        </div>
+          <div className="hidden md:block bg-white/55 border border-[#123646]/8 px-5 py-8 md:px-10 md:py-12">
             {loading ? (
               <p className="font-ja text-center text-[13px] tracking-[0.08em] text-[#123646]/70">
                 読み込み中です。
