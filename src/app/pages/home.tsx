@@ -9,7 +9,6 @@ import galleryImage1 from "../../imports/image-4.png";
 import galleryImage2 from "../../imports/image-5.png";
 import galleryImage3 from "../../imports/image-6.png";
 import galleryImage4 from "../../imports/image-7.png";
-import galleryImage5 from "../../imports/image-8.png";
 import galleryImage6 from "../../imports/image-2.png";
 import galleryImage7 from "../../imports/image-3.png";
 import ruro from "../../imports/ruro.jpg";
@@ -72,8 +71,7 @@ export function Home() {
   }, []);
 
   const galleryImages = [
-    galleryImage1, galleryImage2, galleryImage3, galleryImage4,
-    galleryImage5, galleryImage6, galleryImage7,
+    galleryImage1, galleryImage2, galleryImage3, galleryImage4, galleryImage6, galleryImage7,
   ];
 
   return (
