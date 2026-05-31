@@ -103,8 +103,8 @@ export function Home() {
               ILHA FORMOSA
             </h1>
             <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent mx-auto mb-10" />
-            <p className="text-lg md:text-xl text-white tracking-[0.2em] font-light">
-              本場台湾の味を楽しめる隠れ家的空間
+            <p className="text-base md:text-xl text-white tracking-[0.2em] font-light">
+              創作台湾料理が楽しめる古民家レストラン
             </p>
           </motion.div>
         </div>
