@@ -254,7 +254,7 @@ export function Home() {
       </section>
 
       {/* ================= INTERIOR ================= */}
-      <section className="relative px-6 md:px-10 py-32 md:py-48 overflow-hidden mb-18 md:mb-26">
+      <section className="relative px-6 md:px-10 py-16 md:py-48 overflow-hidden mb-18 md:mb-26">
         <div className="absolute inset-0 bg-[#123646]" />
         <div className="absolute inset-0 opacity-35">
           <img
@@ -274,14 +274,18 @@ export function Home() {
             <p className="font-en-medium text-[12px] tracking-[0.45em] text-white/60">
               INTERIOR
             </p>
-            <h2 className="mt-6 text-[30px] md:text-[44px] leading-[1.7] tracking-[0.14em] font-mincho">
-              落ち着いた、隠れ家的な空間で。
+            <h2 className="mt-6 text-[30px] md:text-[44px] leading-[1.7] tracking-[0.14em] font-mincho px-4 md:px-0">
+              落ち着いた、<br />
+              隠れ家的な空間で。
             </h2>
-            <div className="mt-10 max-w-xl mx-auto">
+            <div className="mt-10 max-w-xl mx-auto px-4 md:px-0">
               <p className="font-ja text-[14px] md:text-[15px] leading-[2.25] tracking-[0.08em] text-white/82 text-center">
-                アンティークとモダンが調和した、落ち着きのある隠れ家的な店内。<br />
-                ゆとりを持たせた席配置で、どなたにも安心してお過ごしいただけます。<br />
-                軽いお食事からコース料理まで、さまざまなシーンでご利用ください。
+                アンティークとモダンが調和した、<br className="hidden md:block" />
+                落ち着きのある隠れ家的な店内。<br />
+                ゆとりを持たせた席配置で、
+                どなたにも安心してお過ごしいただけます。
+                軽いお食事からコース料理まで、<br className="hidden md:block" />
+                さまざまなシーンでご利用ください。
               </p>
             </div>
             <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
