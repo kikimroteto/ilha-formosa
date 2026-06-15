@@ -82,19 +82,24 @@ export function Home() {
             />
           ))}
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/50 to-background" />
-        <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-6">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+        <div className="relative z-20 flex flex-col justify-end h-full px-6 md:px-16 pb-10 md:pb-16">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
           >
-            <h1 className="text-5xl md:text-7xl mb-8 text-white tracking-[0.3em] font-light">
-              ILHA FORMOSA
+            <p className="font-en-medium text-[10px] md:text-[11px] tracking-[0.35em] md:tracking-[0.4em] text-white mb-3 md:mb-4">
+              RESTAURANT · KYOTO, JAPAN
+            </p>
+            <h1 className="text-[46px] md:text-[96px] leading-[0.88] tracking-[0.03em] md:tracking-[0.04em] text-white font-bold mb-4 md:mb-6">
+              ILHA<br />FORMOSA
             </h1>
-            <div className="w-40 h-[1px] bg-gradient-to-r from-transparent via-white/80 to-transparent mx-auto mb-10" />
-            <p className="text-base md:text-xl text-white tracking-[0.2em] font-light">
-              創作台湾料理が楽しめる古民家レストラン
+            <p className="font-ja text-[12px] md:text-[16px] text-white tracking-[0.12em] md:tracking-[0.18em] font-light mb-2 md:mb-2.5">
+              創作台湾料理が楽しめる<br className="md:hidden" />古民家レストラン
+            </p>
+            <p className="font-en-medium text-[9px] md:text-[12px] text-white tracking-[0.16em] md:tracking-[0.2em]">
+              LUNCH / DINNER / TAIWAN TEA
             </p>
           </motion.div>
         </div>

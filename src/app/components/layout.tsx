@@ -77,14 +77,7 @@ export function Layout() {
           <div className="w-full px-6 md:px-10 py-5 md:py-7">
             <div className="flex items-center justify-between">
               {/* ロゴ */}
-              <Link
-                to="/"
-                className={`text-[19px] md:text-2xl tracking-[0.24em] md:tracking-[0.3em] text-white transition duration-500 hover:opacity-60 ${
-                  open ? "opacity-0 pointer-events-none" : "opacity-100"
-                }`}
-              >
-                ILHA FORMOSA
-              </Link>
+              <Link to="/" className="block w-8" />
 
               {/* Instagram */}
               <a
