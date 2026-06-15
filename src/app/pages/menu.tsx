@@ -266,7 +266,7 @@ export function Menu() {
 
         <div className="relative container mx-auto max-w-5xl">
           {/* アンカーナビゲーション */}
-          <motion.div className="fixed bottom-0 left-0 right-0 z-40 md:sticky md:top-0 md:bottom-auto mb-0 md:mb-20">
+          <div className="fixed bottom-0 left-0 right-0 z-40 md:sticky md:top-0 md:bottom-auto mb-0 md:mb-20">
             <nav className="flex justify-center px-4 pb-4 pt-2 md:px-0 md:py-5">
               <div className="w-full max-w-[760px] border border-[#123646]/10 bg-white/90 md:bg-white/80 px-1.5 md:px-3 py-1.5 md:py-2 shadow-[0_-8px_28px_rgba(18,54,70,0.08)] md:shadow-[0_12px_34px_rgba(18,54,70,0.04)] backdrop-blur-sm">
                 <div className="grid grid-cols-4 gap-1 md:flex md:items-center md:justify-between md:gap-2">
@@ -295,7 +295,7 @@ export function Menu() {
                 </div>
               </div>
             </nav>
-          </motion.div>
+          </div>
 
           {/* SP用：下固定ナビにした分、上に余白を作る */}
           <div className="block md:hidden h-16" />

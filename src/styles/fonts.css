@@ -9,29 +9,15 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: 0.05em;
 }
 
-/* English text styling */
 button, input, label {
   font-family: 'Cormorant Garamond', 'Noto Serif JP', serif;
 }
 
-/* メニュー英語用 */
 .font-en-medium {
   font-family: 'Poppins', sans-serif;
   font-weight: 500;
 }
 
-/* メニュー日本語用 */
-.font-ja {
-  font-family: 'Noto Sans JP', sans-serif;
-}
-
-/* メニュー・見出し英語用 */
-.font-en-medium {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-}
-
-/* 日本語本文用 */
 .font-ja {
   font-family: 'Noto Sans JP', sans-serif;
 }

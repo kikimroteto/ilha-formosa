@@ -7,10 +7,6 @@ import heroImage2 from "../../imports/image-2.png";
 import heroImage3 from "../../imports/image-3.png";
 import galleryImage1 from "../../imports/image-4.png";
 import galleryImage2 from "../../imports/image-5.png";
-import galleryImage3 from "../../imports/image-6.png";
-import galleryImage4 from "../../imports/image-7.png";
-import galleryImage6 from "../../imports/image-2.png";
-import galleryImage7 from "../../imports/image-3.png";
 import ruro from "../../imports/ruro.jpg";
 import interiorImage1 from "../../imports/interior1.jpg";
 
@@ -69,10 +65,6 @@ export function Home() {
     };
     fetchNews();
   }, []);
-
-  const galleryImages = [
-    galleryImage1, galleryImage2, galleryImage3, galleryImage4, galleryImage6, galleryImage7,
-  ];
 
   return (
     <div className="min-h-screen bg-transparent overflow-x-hidden text-[#123646]">
@@ -329,7 +321,7 @@ export function Home() {
             {[
               { en: "LUNCH", ja: "ランチ", text: "ルーローハンや台湾鉄道弁当など、台湾の食卓を気軽に楽しめる昼の一皿。", image: galleryImage2, path: "/menu#lunch" },
               { en: "DINNER", ja: "ディナー", text: "前菜から主菜まで、香りと余韻をゆっくり味わえる夜のコース。", image: galleryImage1, path: "/menu#course" },
-              { en: "TEA & DRINK", ja: "お茶とお酒", text: "台湾茶や紹興酒、ワインなど、料理に寄り添うドリンクをご用意しています。", image: galleryImage7, path: "/menu#drink" },
+              { en: "TEA & DRINK", ja: "お茶とお酒", text: "台湾茶や紹興酒、ワインなど、料理に寄り添うドリンクをご用意しています。", image: heroImage3, path: "/menu#drink" },
             ].map((item, index) => (
               <motion.div
                 key={item.en}

@@ -1,9 +1,6 @@
 import { Outlet, Link, useLocation } from "react-router";
 import { useEffect, useState } from "react";
-import "../../styles/fonts.css";
 import "../../styles/index.css";
-import "../../styles/tailwind.css";
-import "../../styles/theme.css";
 
 export function Layout() {
   const location = useLocation();

@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { MapPin, Phone, Clock, Train, Car, CalendarCheck } from "lucide-react";
+import { MapPin, Phone, Clock, Train, CalendarCheck } from "lucide-react";
 import type { ReactNode } from "react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import pontoImage from "../../imports/ponto.jpeg";
